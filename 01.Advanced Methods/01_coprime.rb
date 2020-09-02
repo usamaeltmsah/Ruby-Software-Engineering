@@ -13,7 +13,16 @@ def coprime?(num_1, num_2)
     return true
 end
 
+def coprime2?(num_1, num_2)
+    (2..num_1).none? { |div| num_1 % div == 0 && num_2 % div == 0}
+end
+
 p coprime?(25, 12)    # => true
 p coprime?(7, 11)     # => true
 p coprime?(30, 9)     # => false
 p coprime?(6, 24)     # => false
+puts "----"
+p coprime2?(25, 13)    # => true
+p coprime2?(8, 9)     # => true
+p coprime2?(30, 9)     # => false
+p coprime2?(6, 24)     # => false
