@@ -5,13 +5,13 @@
 def compress_str(str)
     compressed_str = ""
     c = 0
-    (1..str.length).each do |i|
+    (0...str.length).each do |i|
         c += 1
-        if str[i-1] == str[i]
+        if str[i] == str[i+1]
             next
         end
         compressed_str += c.to_s if c > 1 
-        compressed_str += str[i-1]
+        compressed_str += str[i]
         c = 0
     end
     compressed_str
