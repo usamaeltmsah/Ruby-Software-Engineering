@@ -13,3 +13,8 @@ def repeat(str, num)
     num.times { || new_str+=str}
     new_str
 end
+
+def yell(str)
+    str.upcase!
+    str + "!"
+end
