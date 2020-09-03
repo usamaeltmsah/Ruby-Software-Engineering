@@ -5,5 +5,12 @@ def union(*arrs)
     arrs.flatten
 end
 
+def union2(*arrs)
+    arrs.inject { |acc, arr| acc + arr }
+end
+
 p union(["a", "b"], [1, 2, 3]) # => ["a", "b", 1, 2, 3]
 p union(["x", "y"], [true, false], [20, 21, 23]) # => ["x", "y", true, false, 20, 21, 23]
+puts "------------------------------"
+p union(["a", "b"], [1, 2, 3]) # => ["a", "b", 1, 2, 3]
+p union(["x", "y"], [true, "false"], [20, 21, 23]) # => ["x", "y", true, "false", 20, 21, 23]
