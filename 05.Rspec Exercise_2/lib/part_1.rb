@@ -17,3 +17,15 @@ def merge(hash1, hash2)
     hash2.each { |k, v| new_hash[k] = v}
     new_hash
 end
+
+def censor(sent, arr)
+    vowels = "aeiou"
+    words = sent.split
+    (0...words.length).each do |i|
+        k = arr.index(words[i].downcase)
+        if k != nil
+            (0...words[k].length).each { |j| words[i][j] = '*' if vowels.include?(words[i][j].downcase)}
+        end
+    end
+    words.join(" ")
+  end
