@@ -1,3 +1,7 @@
+# To run tests write in command of current location
+# bundle install --> to install bundle
+# bundle exec rspec --> to run test cases
+
 def average(num1, num2)
     return (num1+num2) / 2.0
 end
