@@ -18,3 +18,16 @@ def yell(str)
     str.upcase!
     str + "!"
 end
+
+def alternating_case(str)
+    words = str.split
+    new_words = []
+    (0...words.length).each do |i|
+        if i % 2 == 0
+            new_words << words[i].upcase
+        else
+            new_words << words[i].downcase
+        end
+    end
+    new_words.join(" ")
+end
