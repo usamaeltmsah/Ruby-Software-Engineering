@@ -29,3 +29,12 @@ def censor(sent, arr)
     end
     words.join(" ")
   end
+
+  def power_of_two?(n)
+    i = 0
+    while i < n
+        return true if 2 ** i == n
+        i += 1
+    end
+    return false
+  end
