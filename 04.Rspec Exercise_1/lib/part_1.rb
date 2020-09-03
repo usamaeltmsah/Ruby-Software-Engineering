@@ -7,3 +7,9 @@ def average_array(arr)
     arr.each { |el| sum += el}
     sum / arr.length
 end
+
+def repeat(str, num)
+    new_str = ""
+    num.times { || new_str+=str}
+    new_str
+end
