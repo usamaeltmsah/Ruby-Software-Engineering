@@ -1,4 +1,4 @@
-require "prime"
+require "02_prime"
 
 describe "prime?" do
   it "should accept a number as an argument" do

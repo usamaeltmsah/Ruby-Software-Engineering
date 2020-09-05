@@ -1,4 +1,4 @@
-require "many_vowel_words"
+require "04_many_vowel_words"
 
 describe "many_vowel_words" do
     it "should return the sentence only containing words with two or more vowels" do

@@ -1,4 +1,4 @@
-require "fuzz_buzz"
+require "05_fuzz_buzz"
 
 describe "fuzz_buzz" do
     it "should return an array of numbers from one to the given number that are not divisible by 3 or 5" do
