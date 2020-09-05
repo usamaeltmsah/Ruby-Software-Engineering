@@ -9,3 +9,12 @@ def largest_prime_factor(num)
         return factor if num % factor == 0 && factor.prime?
     end 
 end
+
+def unique_chars?(str)
+    hash = Hash.new(0)
+
+    str.each_char { |ch| hash[ch] += 1}
+
+    return true if hash.none? { |k, v| v > 1 }
+    return false
+end
