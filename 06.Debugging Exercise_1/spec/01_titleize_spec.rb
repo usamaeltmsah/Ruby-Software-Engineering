@@ -1,4 +1,4 @@
-require "titleize"
+require "01_titleize"
 
 puts "Instructions: Debug the files in /lib to pass RSpec"
 

@@ -1,4 +1,4 @@
-require "letter_count"
+require "03_letter_count"
 
 describe "letter_count" do
     it "should return the number of times the char appears in the string" do

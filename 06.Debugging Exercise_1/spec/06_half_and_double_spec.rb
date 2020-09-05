@@ -1,4 +1,4 @@
-require "half_and_double"
+require "06_half_and_double"
 
 describe "half_and_double" do
     it "should return a new array where every even number is divided by 2 and every odd number is multipled by 2" do
