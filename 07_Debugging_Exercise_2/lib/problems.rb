@@ -18,3 +18,15 @@ def unique_chars?(str)
     return true if hash.none? { |k, v| v > 1 }
     return false
 end
+
+def dupe_indices(arr)
+    count = Hash.new(0)
+    hash = Hash.new {|h,k| h[k] = Array.new }
+    arr.each { |el| count[el] += 1}
+    #debugger
+    arr.each_with_index do |el, i|
+        hash[el] << i if count[el] > 1
+    end
+    hash
+    
+end
