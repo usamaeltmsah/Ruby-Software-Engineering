@@ -15,3 +15,9 @@ def greater_proc_value(num, prc1, prc2)
 
     return [res1, res2].max
 end
+
+def and_selector(arr, prc1, prc2)
+    new_arr = []
+    arr.each { |el| new_arr << el if prc1.call(el) && prc2.call(el)}
+    new_arr
+end
