@@ -8,3 +8,10 @@ def no_valid_url?(urls)
         doms.any? { |dom| url.end_with?(dom)}
     end
 end
+
+def any_passing_students?(students)
+    students.any? do |stud| 
+        avg_grade = (stud[:grades].sum / stud[:grades].size)
+        avg_grade >= 75
+    end
+end
