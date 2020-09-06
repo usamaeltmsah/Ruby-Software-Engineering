@@ -19,3 +19,8 @@ def aba_translate(str)
     end
     new_str
 end
+
+def aba_array(words)
+    aba_tran_arr = words.map { |w| aba_translate(w)}
+    aba_tran_arr
+end
