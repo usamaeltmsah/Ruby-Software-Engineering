@@ -20,3 +20,8 @@ def my_any?(arr, &prc)
     arr.each { |el| return true if true == prc.call(el)}
     false
 end
+
+def my_all?(arr, &prc)
+    arr.each { |el| return false if false == prc.call(el)}
+    true
+end
