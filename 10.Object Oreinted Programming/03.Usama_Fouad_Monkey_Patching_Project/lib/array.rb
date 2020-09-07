@@ -19,4 +19,10 @@ class Array
         end
     end
   end
+
+  def counts
+    counts = Hash.new(0)
+    self.each { |el| counts[el] += 1}
+    return counts
+  end
 end
