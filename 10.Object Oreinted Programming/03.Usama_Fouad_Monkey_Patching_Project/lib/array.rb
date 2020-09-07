@@ -36,4 +36,10 @@ class Array
     self.each_with_index { |el, idx| return idx if el == val}
     return nil
   end
+
+  def my_uniq
+    new_arr = []
+    self.each { |el| new_arr << el if !new_arr.include?(el)}
+    new_arr
+  end
 end
