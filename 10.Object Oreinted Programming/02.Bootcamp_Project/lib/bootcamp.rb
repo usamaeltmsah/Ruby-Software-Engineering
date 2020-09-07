@@ -3,7 +3,8 @@ class Bootcamp
         @name = name
         @slogan = slogan
         @student_capacity = student_capacity
-        @teachers = @students = []
+        @teachers = []
+        @students = []
         @grades = Hash.new {|h,k| h[k] = [] }
     end
 
@@ -39,5 +40,9 @@ class Bootcamp
     def enrolled?(student)
         return true if @students.include?(student)
         false
+    end
+
+    def student_to_teacher_ratio
+        @students.length / @teachers.length
     end
 end
