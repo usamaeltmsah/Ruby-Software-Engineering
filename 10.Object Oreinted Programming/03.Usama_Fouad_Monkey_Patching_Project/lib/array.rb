@@ -42,4 +42,17 @@ class Array
     self.each { |el| new_arr << el if !new_arr.include?(el)}
     new_arr
   end
+
+  def my_transpose
+    len = self.length
+    new_arr = []
+    (0...len).each do |i|
+        nest_arr = []
+        (0...self[i].length).each do |j|
+            nest_arr << self[j][i]
+        end
+        new_arr << nest_arr
+    end
+    new_arr
+  end
 end
