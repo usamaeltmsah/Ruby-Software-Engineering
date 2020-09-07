@@ -25,4 +25,10 @@ class Array
     self.each { |el| counts[el] += 1}
     return counts
   end
+
+  def my_count(val)
+    c = 0
+    self.each { |el| c += 1 if val == el}
+    c
+  end
 end
