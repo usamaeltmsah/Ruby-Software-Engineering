@@ -31,4 +31,9 @@ class Array
     self.each { |el| c += 1 if val == el}
     c
   end
+
+  def my_index(val)
+    self.each_with_index { |el, idx| return idx if el == val}
+    return nil
+  end
 end
