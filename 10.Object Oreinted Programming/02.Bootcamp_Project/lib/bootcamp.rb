@@ -7,5 +7,19 @@ class Bootcamp
         @grades = Hash.new {|h,k| h[k] = [] }
     end
 
+    def name
+        @name
+    end
 
+    def slogan
+        @slogan
+    end
+
+    def teachers
+        @teachers
+    end
+
+    def students
+        @students
+    end
 end
