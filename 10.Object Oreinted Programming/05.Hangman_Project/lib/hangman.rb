@@ -70,7 +70,7 @@ class Hangman
   end
 
   def lose?
-    if @guess_word.join != @secret_word
+    if @guess_word.join != @secret_word && @remaining_incorrect_guesses == 0
       puts 'LOSE'
       return true
       else
