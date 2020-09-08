@@ -68,4 +68,13 @@ class Hangman
         return false
     end
   end
+
+  def lose?
+    if @guess_word.join != @secret_word
+      puts 'LOSE'
+      return true
+      else
+        return false
+    end
+  end
 end
