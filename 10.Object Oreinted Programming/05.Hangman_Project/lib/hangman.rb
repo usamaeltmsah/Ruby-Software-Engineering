@@ -28,4 +28,9 @@ class Hangman
     return true if @attempted_chars.include?(char)
     false
   end
+
+  def get_matching_indices(char)
+    arr = []
+    @secret_word.each_with_index { |c, i| arr << i if c == char }
+  end
 end
