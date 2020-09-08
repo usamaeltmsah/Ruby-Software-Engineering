@@ -11,4 +11,12 @@ class Hangman
     @attempted_chars = []
     @remaining_incorrect_guesses = 5
   end
+
+  def guess_word
+    @guess_word
+  end
+
+  def remaining_incorrect_guesses
+    @remaining_incorrect_guesses
+  end
 end
