@@ -38,4 +38,19 @@ class Hangman
   def fill_indices(char, arr)
     arr.each { |i| @guess_word[i] = char}
   end
+
+  def try_guess(char)
+    if !@secret_word.include?(char)
+      @remaining_incorrect_guesses -= 1
+    end
+    if already_attempted?(char)
+      puts 'that has already been attempted'
+      return false
+    else
+      indices = get_matching_indices(char)
+      fill_indices(char, indices)
+      @attempted_chars << char
+      return true
+    end
+  end
 end
