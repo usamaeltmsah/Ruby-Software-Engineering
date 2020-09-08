@@ -34,4 +34,8 @@ class Hangman
     @secret_word.each_char.with_index { |c, i| arr << i if c == char }
     arr
   end
+
+  def fill_indices(char, arr)
+    arr.each { |i| @guess_word[i] = char}
+  end
 end
