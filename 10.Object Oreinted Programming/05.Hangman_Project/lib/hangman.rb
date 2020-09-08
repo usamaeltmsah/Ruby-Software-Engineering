@@ -16,6 +16,10 @@ class Hangman
     @guess_word
   end
 
+  def attempted_chars
+    @attempted_chars
+  end
+
   def remaining_incorrect_guesses
     @remaining_incorrect_guesses
   end
