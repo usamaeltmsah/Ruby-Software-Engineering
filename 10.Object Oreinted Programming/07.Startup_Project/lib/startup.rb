@@ -40,4 +40,8 @@ class Startup
             raise "No enough funding in the startup!"
         end
     end
+
+    def payday
+        @employees.each { |employee| pay_employee(employee) }
+    end
 end
