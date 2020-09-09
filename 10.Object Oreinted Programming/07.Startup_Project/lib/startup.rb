@@ -50,4 +50,9 @@ class Startup
         @employees.each { |emp| sum += salaries[emp.title]}
         sum / @employees.length
     end
+
+    def close
+        @employees = []
+        @funding = 0
+    end
 end
