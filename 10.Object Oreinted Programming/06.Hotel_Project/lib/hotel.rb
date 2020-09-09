@@ -11,8 +11,7 @@ class Hotel
   end
 
   def name
-    cap_name = @name.split.map { |n| n.capitalize}
-    cap_name.join(" ")
+    cap_name = @name.split.map(&:capitalize).join(" ")
   end
 
   def rooms
@@ -20,10 +19,7 @@ class Hotel
   end
 
   def room_exists?(room)
-    if rooms.keys.include?(room)
-        return true
-    end
-    return false
+    return rooms.has_key?(room)
   end
 
   def check_in(person, room)
