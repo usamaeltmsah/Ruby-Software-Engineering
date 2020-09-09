@@ -18,4 +18,8 @@ class Room
         end
         return true
     end
+
+    def available_space
+        @capacity - @occupants.length
+    end
 end
