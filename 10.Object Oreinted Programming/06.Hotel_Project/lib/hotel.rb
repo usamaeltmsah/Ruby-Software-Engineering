@@ -38,4 +38,9 @@ class Hotel
         end
     end
   end
+
+  def has_vacancy?
+    rooms.values.each { |room| return true if !room.full?}
+    return false
+  end
 end
