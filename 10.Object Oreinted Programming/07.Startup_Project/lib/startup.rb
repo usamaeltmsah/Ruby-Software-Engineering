@@ -10,12 +10,11 @@ class Startup
     end
 
     def valid_title?(title)
-        return @salaries.keys.any? { |startup_title| startup_title == title}
+        return @salaries.has_key?(title)
     end
 
     def >(startup)
-        return true if self.funding > startup.funding
-        false
+        return @funding > startup.funding
     end
 
     def hire(employee_name, title)
@@ -23,7 +22,7 @@ class Startup
             employee = Employee.new(employee_name, title)
             @employees << employee
         else
-            raise "Title is invalid!"
+            raise "Title does not exist!"
         end
     end
 
@@ -42,7 +41,7 @@ class Startup
     end
 
     def payday
-        @employees.each { |employee| pay_employee(employee) }
+        @employees.each { |employee| self.pay_employee(employee) }
     end
 
     def average_salary
