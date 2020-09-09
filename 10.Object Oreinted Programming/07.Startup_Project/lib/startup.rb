@@ -44,4 +44,10 @@ class Startup
     def payday
         @employees.each { |employee| pay_employee(employee) }
     end
+
+    def average_salary
+        sum = 0
+        @employees.each { |emp| sum += salaries[emp.title]}
+        sum / @employees.length
+    end
 end
