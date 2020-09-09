@@ -43,4 +43,8 @@ class Hotel
     rooms.values.each { |room| return true if !room.full?}
     return false
   end
+
+  def list_rooms
+    rooms.each { |k, v| puts k + ".*" + v.available_space.to_s }
+  end
 end
