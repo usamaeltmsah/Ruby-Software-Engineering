@@ -5,4 +5,8 @@ class Employee
         @title = title
         @earnings = 0
     end
+
+    def pay(amount)
+        @earnings += amount
+    end
 end
