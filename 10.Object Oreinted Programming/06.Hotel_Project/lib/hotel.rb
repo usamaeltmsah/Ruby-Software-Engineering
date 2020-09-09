@@ -18,4 +18,11 @@ class Hotel
   def rooms
     @rooms
   end
+
+  def room_exists?(room)
+    if rooms.keys.include?(room)
+        return true
+    end
+    return false
+  end
 end
