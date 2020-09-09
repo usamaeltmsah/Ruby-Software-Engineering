@@ -25,4 +25,17 @@ class Hotel
     end
     return false
   end
+
+  def check_in(person, room)
+    if !room_exists?(room)
+        puts 'sorry, room does not exist'
+    else
+        room_ins = rooms[room]
+        if room_ins.add_occupant(person)
+            puts 'check in successful'
+        else
+            puts 'sorry, room is full'
+        end
+    end
+  end
 end
