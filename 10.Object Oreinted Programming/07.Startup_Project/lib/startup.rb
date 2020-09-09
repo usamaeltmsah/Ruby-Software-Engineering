@@ -8,4 +8,8 @@ class Startup
         @salaries = salaries
         @employees = []
     end
+
+    def valid_title?(title)
+        return @salaries.keys.any? { |startup_title| startup_title == title}
+    end
 end
