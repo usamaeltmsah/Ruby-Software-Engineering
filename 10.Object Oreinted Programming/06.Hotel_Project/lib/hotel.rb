@@ -40,6 +40,6 @@ class Hotel
   end
 
   def list_rooms
-    rooms.each { |k, v| puts k + ".*" + v.available_space.to_s }
+    rooms.each { |room_name, room| puts "#{room_name} : #{room.available_space}" }
   end
 end
