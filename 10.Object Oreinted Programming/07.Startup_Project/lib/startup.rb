@@ -55,4 +55,11 @@ class Startup
         @employees = []
         @funding = 0
     end
+
+    def acquire(startup)
+        @funding += startup.funding
+        startup.salaries.each { |k, v| @salaries[k] = v if !salaries.keys.include?(k)}
+        startup.employees.each { |emp| @employees << emp}
+        startup.close
+    end
 end
