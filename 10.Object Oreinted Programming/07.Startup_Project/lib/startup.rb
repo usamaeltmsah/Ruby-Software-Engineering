@@ -26,4 +26,8 @@ class Startup
             raise "Title is invalid!"
         end
     end
+
+    def size
+        @employees.length
+    end
 end
