@@ -11,4 +11,11 @@ class Room
       def occupants
         @occupants
       end
+
+      def full?
+        if @occupants.length < @capacity
+            return false
+        end
+        return true
+    end
 end
