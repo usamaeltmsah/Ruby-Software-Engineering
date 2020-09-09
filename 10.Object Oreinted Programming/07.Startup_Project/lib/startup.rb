@@ -17,4 +17,13 @@ class Startup
         return true if self.funding > startup.funding
         false
     end
+
+    def hire(employee_name, title)
+        if valid_title?(title)
+            employee = Employee.new(employee_name, title)
+            @employees << employee
+        else
+            raise "Title is invalid!"
+        end
+    end
 end
