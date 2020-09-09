@@ -9,4 +9,13 @@ class Hotel
         @rooms[k] = room
     end
   end
+
+  def name
+    cap_name = @name.split.map { |n| n.capitalize}
+    cap_name.join(" ")
+  end
+
+  def rooms
+    @rooms
+  end
 end
