@@ -12,4 +12,9 @@ class Startup
     def valid_title?(title)
         return @salaries.keys.any? { |startup_title| startup_title == title}
     end
+
+    def >(startup)
+        return true if self.funding > startup.funding
+        false
+    end
 end
