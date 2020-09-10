@@ -67,12 +67,9 @@ class Hash
     # hash_2.my_select { |k, v| k + 1 == v }      # => {10=>11, 5=>6, 7=>8})
     # hash_2.my_select                            # => {4=>4}
     def my_select(&prc)
+        prc ||= Proc.new { |k, v| k == v}
         new_hash = {}
-        if prc != nil
-            self.each { |k, v| new_hash[k] = v if prc.call(k, v)}
-        else
-            self.each { |k, v| new_hash[k] = v if k == v }
-        end
+        self.each { |k, v| new_hash[k] = v if prc.call(k, v)}
         new_hash
     end
 end
@@ -91,7 +88,7 @@ class String
         len = self.length
         (0...len).each do |i|
             (i...len).each do |j|
-                if length == nil
+                if length.nil?
                     sub_strs << self[i..j]
                 elsif self[i..j].length == length
                     sub_strs << self[i..j]
@@ -112,7 +109,7 @@ class String
     # "bootcamp".caesar_cipher(2) #=> "dqqvecor"
     # "zebra".caesar_cipher(4)    #=> "difve"
     def caesar_cipher(num)
-        alphabets = 'abcdefghijklmnopqrstuvwxyz'
+        alphabets = ('a'..'z').to_a.join
         new_str = ""
         self.each_char do |ch|
             new_ind = (alphabets.index(ch) + num) % 26
