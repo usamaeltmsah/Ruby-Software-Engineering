@@ -27,4 +27,9 @@ class Battleship
         print 'you win'
         return true
     end
+
+    def game_over?
+        return true if win? || lose?
+        false
+    end
 end
