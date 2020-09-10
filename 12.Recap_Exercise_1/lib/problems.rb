@@ -116,6 +116,12 @@ class String
     # "bootcamp".caesar_cipher(2) #=> "dqqvecor"
     # "zebra".caesar_cipher(4)    #=> "difve"
     def caesar_cipher(num)
-
+        alphabets = 'abcdefghijklmnopqrstuvwxyz'
+        new_str = ""
+        self.each_char do |ch|
+            new_ind = (alphabets.index(ch) + num) % 26
+            new_str += alphabets[new_ind]
+        end
+        new_str
     end
 end
