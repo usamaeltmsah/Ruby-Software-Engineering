@@ -32,15 +32,12 @@ class Board
   end
 
   def place_random_ships
-    quart_size = size / 4
-    i = 0
-    while i < quart_size
-      rand1 = rand(0..Math.sqrt(quart_size))
-      rand2 = rand(0..Math.sqrt(quart_size))
-      if @grid[rand1][rand2] != :S
-        @grid[rand1][rand2] = :S
-        i += 1
-      end
+    quart_size = size * 0.25
+    len = @grid.length
+    while self.num_ships < quart_size
+      rand1 = rand(0...len)
+      rand2 = rand(0...len)
+      @grid[rand1][rand2] = :S
     end
   end
 
