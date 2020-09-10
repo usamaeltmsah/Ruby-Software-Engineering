@@ -56,4 +56,12 @@ class Board
   def self.print_grid(grid)
     grid.each { |sub_arr| puts sub_arr.join(" ")}
   end
+
+  def cheat
+    Board.print_grid(@grid)
+  end
+
+  def print
+    Board.print_grid(self.hidden_ships_grid)
+  end
 end
