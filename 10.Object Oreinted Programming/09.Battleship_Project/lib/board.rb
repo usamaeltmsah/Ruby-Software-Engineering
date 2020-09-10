@@ -30,4 +30,18 @@ class Board
         return false
     end
   end
+
+  def place_random_ships
+    dim = Math.sqrt(size)
+    quart_size = size / 4
+    i = 0
+    while i < quart_size
+      rand1 = rand(0..Math.sqrt(quart_size))
+      rand2 = rand(0..Math.sqrt(quart_size))
+      if @grid[rand1][rand2] != :S
+        @grid[rand1][rand2] = :S
+        i += 1
+      end
+    end
+  end
 end
