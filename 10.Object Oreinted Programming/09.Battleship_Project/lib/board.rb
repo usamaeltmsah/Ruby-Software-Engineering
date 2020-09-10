@@ -15,4 +15,8 @@ class Board
   def []=(pos, val)
     @grid[pos[0]][pos[1]] = val
   end
+
+  def num_ships
+    @grid.flatten.count(:S)
+  end
 end
