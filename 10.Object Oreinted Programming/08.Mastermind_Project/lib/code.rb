@@ -25,4 +25,8 @@ class Code
     len.times { || rand_pegs << pegs[rand(0..3)]}
     Code.new(rand_pegs)
   end
+
+  def self.from_string(pegs)
+    Code.new(pegs.split(""))
+  end
 end
