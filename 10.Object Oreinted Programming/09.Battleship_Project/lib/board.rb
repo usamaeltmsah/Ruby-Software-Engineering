@@ -32,7 +32,6 @@ class Board
   end
 
   def place_random_ships
-    dim = Math.sqrt(size)
     quart_size = size / 4
     i = 0
     while i < quart_size
