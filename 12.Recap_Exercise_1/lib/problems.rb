@@ -71,7 +71,13 @@ class Hash
     # hash_2.my_select { |k, v| k + 1 == v }      # => {10=>11, 5=>6, 7=>8})
     # hash_2.my_select                            # => {4=>4}
     def my_select(&prc)
-
+        new_hash = {}
+        if prc != nil
+            self.each { |k, v| new_hash[k] = v if prc.call(k, v)}
+        else
+            self.each { |k, v| new_hash[k] = v if k == v }
+        end
+        new_hash
     end
 end
 
