@@ -5,14 +5,13 @@ class Battleship
     attr_reader :board, :player
     def initialize(n)
         @player = Player.new
-        size = n * n
         @board = Board.new(n)
-        @remaining_misses = 0.5 * size
+        @remaining_misses = 0.5 * @board.size
     end
 
     def start_game
         self.board.place_random_ships
-        puts self.board.num_ships
+        puts "There are #{self.board.num_ships}hidden ships on the board."
         self.board.print
     end
 
@@ -29,14 +28,13 @@ class Battleship
     end
 
     def game_over?
-        return true if win? || lose?
-        false
+        self.win? || self.lose?
     end
 
     def turn
         move = self.player.get_move
         @remaining_misses -= 1 if !self.board.attack(move)
         self.board.print
-        puts @remaining_misses
+        puts "#{@remaining_misses} remaining misses"
     end
 end
