@@ -33,4 +33,8 @@ class Code
   def [](idx)
     pegs[idx]
   end
+
+  def length
+    pegs.length
+  end
 end
