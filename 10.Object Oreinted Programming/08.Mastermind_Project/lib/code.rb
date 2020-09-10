@@ -49,4 +49,8 @@ class Code
     code.pegs.each_with_index { |ch, i| c += 1 if pegs.include?(ch) && ch != pegs[i] }
     c
   end
+
+  def ==(code)
+    self.pegs == code.pegs
+  end
 end
