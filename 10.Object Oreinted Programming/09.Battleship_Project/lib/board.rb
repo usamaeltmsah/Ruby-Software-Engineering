@@ -6,11 +6,13 @@ class Board
   end
 
   def [](pos)
-    @grid[pos[0]][pos[1]]
+    row, col = pos
+    @grid[row][col]
   end
 
   def []=(pos, val)
-    @grid[pos[0]][pos[1]] = val
+    row, col = pos
+    @grid[row][col] = val
   end
 
   def num_ships
