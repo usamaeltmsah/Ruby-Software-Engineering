@@ -10,8 +10,7 @@ class Code
   }
 
   def self.valid_pegs?(chars_arr)
-    pegs_chars = POSSIBLE_PEGS.keys
-    chars_arr.all? { |ch| pegs_chars.include?(ch.upcase) }
+    chars_arr.all? { |ch| POSSIBLE_PEGS.has_key?(ch.upcase) }
   end
 
   def initialize(char_arr)
@@ -22,7 +21,7 @@ class Code
   def self.random(len)
     rand_pegs = []
     pegs = POSSIBLE_PEGS.keys
-    len.times { || rand_pegs << pegs[rand(0..3)]}
+    len.times { || rand_pegs << pegs.sample }
     Code.new(rand_pegs)
   end
 
