@@ -20,6 +20,11 @@ class Battleship
         return false if @remaining_misses > 0
         puts 'you lose'
         return true
+    end
 
+    def win?
+        return false if self.board.num_ships > 0
+        print 'you win'
+        return true
     end
 end
