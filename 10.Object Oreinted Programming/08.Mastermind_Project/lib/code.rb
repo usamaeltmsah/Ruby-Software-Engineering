@@ -1,4 +1,7 @@
 class Code
+
+  attr_reader :pegs
+
   POSSIBLE_PEGS = {
     "R" => :red,
     "G" => :green,
@@ -14,5 +17,12 @@ class Code
   def initialize(char_arr)
     raise "Not valid pegs!" if !Code.valid_pegs?(char_arr)
     @pegs = char_arr.map(&:upcase)
+  end
+
+  def self.random(len)
+    rand_pegs = []
+    pegs = POSSIBLE_PEGS.keys
+    len.times { || rand_pegs << pegs[rand(0..3)]}
+    Code.new(rand_pegs)
   end
 end
