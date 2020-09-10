@@ -9,4 +9,10 @@ class Battleship
         @board = Board.new(n)
         @remaining_misses = 0.5 * size
     end
+
+    def start_game
+        self.board.place_random_ships
+        puts self.board.num_ships
+        self.board.print
+    end
 end
