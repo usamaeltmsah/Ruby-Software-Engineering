@@ -37,4 +37,10 @@ class Code
   def length
     pegs.length
   end
+
+  def num_exact_matches(code)
+    c = 0
+    code.pegs.each_with_index { |ch, i| c += 1 if ch == pegs[i] }
+    c
+  end
 end
