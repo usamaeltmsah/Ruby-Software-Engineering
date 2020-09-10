@@ -32,4 +32,11 @@ class Battleship
         return true if win? || lose?
         false
     end
+
+    def turn
+        move = self.player.get_move
+        @remaining_misses -= 1 if !self.board.attack(move)
+        self.board.print
+        puts @remaining_misses
+    end
 end
