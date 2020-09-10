@@ -43,4 +43,20 @@ class Board
       end
     end
   end
+
+  def hidden_ships_grid
+    new_arr = []
+    @grid.each do |sub_arr|
+      new_sub = []
+      sub_arr.each do |el|
+        if el == :S
+          new_sub << :N
+        else
+          new_sub << el
+        end
+      end
+      new_arr << new_sub
+    end
+    new_arr
+  end
 end
