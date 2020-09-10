@@ -43,4 +43,10 @@ class Code
     code.pegs.each_with_index { |ch, i| c += 1 if ch == pegs[i] }
     c
   end
+
+  def num_near_matches(code)
+    c = 0
+    code.pegs.each_with_index { |ch, i| c += 1 if pegs.include?(ch) && ch != pegs[i] }
+    c
+  end
 end
