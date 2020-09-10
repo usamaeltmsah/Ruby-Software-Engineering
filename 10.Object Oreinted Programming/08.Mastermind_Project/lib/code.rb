@@ -29,4 +29,8 @@ class Code
   def self.from_string(pegs)
     Code.new(pegs.split(""))
   end
+
+  def [](idx)
+    pegs[idx]
+  end
 end
