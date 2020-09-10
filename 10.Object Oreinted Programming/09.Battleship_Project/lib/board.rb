@@ -42,19 +42,15 @@ class Board
   end
 
   def hidden_ships_grid
-    new_arr = []
-    @grid.each do |sub_arr|
-      new_sub = []
-      sub_arr.each do |el|
+    @grid.map do |r|
+      r.map do |el|
         if el == :S
-          new_sub << :N
-        else
-          new_sub << el
+          :N
+          else
+            el
         end
       end
-      new_arr << new_sub
     end
-    new_arr
   end
 
   def self.print_grid(grid)
