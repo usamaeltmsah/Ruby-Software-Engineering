@@ -59,4 +59,8 @@ class Board
     end
     new_arr
   end
+
+  def self.print_grid(grid)
+    grid.each { |sub_arr| puts sub_arr.join(" ")}
+  end
 end
