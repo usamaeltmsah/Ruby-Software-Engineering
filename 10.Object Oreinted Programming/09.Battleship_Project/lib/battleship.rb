@@ -15,4 +15,11 @@ class Battleship
         puts self.board.num_ships
         self.board.print
     end
+
+    def lose?
+        return false if @remaining_misses > 0
+        puts 'you lose'
+        return true
+
+    end
 end
