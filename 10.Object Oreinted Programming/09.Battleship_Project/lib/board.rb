@@ -1,4 +1,5 @@
 class Board
+    attr_reader :size
   def initialize(n)
     @grid = Array.new(n) { Array.new(n)}
     (0...n).each do |i|
