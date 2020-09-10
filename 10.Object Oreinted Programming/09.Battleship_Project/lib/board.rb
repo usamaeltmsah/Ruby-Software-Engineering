@@ -7,4 +7,12 @@ class Board
     end
     @size = n * n
   end
+
+  def [](pos)
+    @grid[pos[0]][pos[1]]
+  end
+
+  def []=(pos, val)
+    @grid[pos[0]][pos[1]] = val
+  end
 end
