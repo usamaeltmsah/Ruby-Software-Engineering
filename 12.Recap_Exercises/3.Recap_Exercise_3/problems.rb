@@ -140,3 +140,16 @@ p vowel_rotate('oranges')       # => "erongas"
 p vowel_rotate('headphones')    # => "heedphanos"
 p vowel_rotate('bootcamp')      # => "baotcomp"
 p vowel_rotate('awesome')       # => "ewasemo"
+
+# ----------------------------------------------------------------------------
+class String
+    def select(&prc)
+        prc ||= Proc.new { |ch| ""}
+        self.each_char.select { |ch| ch if prc.call(ch) == true}.join
+    end
+end
+
+# Examples
+p "app academy".select { |ch| !"aeiou".include?(ch) }   # => "pp cdmy"
+p "HELLOworld".select { |ch| ch == ch.upcase }          # => "HELLO"
+p "HELLOworld".select          # => ""
