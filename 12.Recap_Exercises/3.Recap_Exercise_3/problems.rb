@@ -220,3 +220,29 @@ p lucas_sequence(2)   # => [2, 1]
 p lucas_sequence(3)   # => [2, 1, 3]
 p lucas_sequence(6)   # => [2, 1, 3, 4, 7, 11]
 p lucas_sequence(8)   # => [2, 1, 3, 4, 7, 11, 18, 29]
+
+# ----------------------------------------------------------------------------
+
+def prime_factorization(num)
+    prime_factors = []
+    i = 2
+    while i <= num
+        if num % i == 0
+            prime_factors << i
+            num /= i
+            i = 2
+            next
+        end
+        i += 1
+    end
+    prime_factors
+end
+
+# Examples
+p prime_factorization(12)     # => [2, 2, 3]
+p prime_factorization(24)     # => [2, 2, 2, 3]
+p prime_factorization(25)     # => [5, 5]
+p prime_factorization(60)     # => [2, 2, 3, 5]
+p prime_factorization(7)      # => [7]
+p prime_factorization(11)     # => [11]
+p prime_factorization(2017)   # => [2017]
