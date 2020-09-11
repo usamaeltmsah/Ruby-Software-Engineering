@@ -35,7 +35,14 @@ end
 class Array
     # Write a method, Array#pair_sum_count, that takes in a target number returns the number of pairs of elements that sum to the given target
     def pair_sum_count(num)
-
+        len = self.length
+        c = 0
+        (0...len).each do |i|
+            (i...len).each do |j|
+                c += 1 if num == self[i] + self[j]
+            end
+        end
+        c
     end
 
     # Write a method, Array#bubble_sort, that takes in an optional proc argument.
