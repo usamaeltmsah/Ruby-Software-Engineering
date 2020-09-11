@@ -16,7 +16,7 @@ end
 def most_frequent_bigram(str)
     bigrams = []
     count = Hash.new(0)
-    (0...str.length-1).each { |i| bigrams << str[i] + str[i + 1] }
+    (0...str.length-1).each { |i| bigrams << str[i..i+1] }
     bigrams.each { |bi| count[bi] += 1 }
     count.key(count.values.max)
 end
@@ -38,7 +38,7 @@ class Array
         len = self.length
         c = 0
         (0...len).each do |i|
-            (i...len).each do |j|
+            (i+1...len).each do |j|
                 c += 1 if num == self[i] + self[j]
             end
         end
