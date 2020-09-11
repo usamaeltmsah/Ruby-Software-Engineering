@@ -188,11 +188,9 @@ p word_2        # => "DiJkStRa"
 
 def multiply(a, b)
     return 0 if a == 0 || b == 0
-    if a > 0
-        b + multiply(a-1, b)
-    else
-        -b + multiply(a+1, b)
-    end
+    
+    return b + multiply(a-1, b) if a > 0
+    return -b + multiply(a+1, b) if a < 0
 end
 
 
