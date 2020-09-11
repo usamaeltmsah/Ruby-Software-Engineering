@@ -142,6 +142,7 @@ p vowel_rotate('bootcamp')      # => "baotcomp"
 p vowel_rotate('awesome')       # => "ewasemo"
 
 # ----------------------------------------------------------------------------
+
 class String
     def select(&prc)
         prc ||= Proc.new { |ch| ""}
@@ -182,3 +183,24 @@ word_2.map! do |ch, i|
     end
 end
 p word_2        # => "DiJkStRa"
+
+# ----------------------------------------------------------------------------
+
+def multiply(a, b)
+    return 0 if a == 0 || b == 0
+    if a > 0
+        b + multiply(a-1, b)
+    else
+        -b + multiply(a+1, b)
+    end
+end
+
+
+# Examples
+p multiply(3, 5)        # => 15
+p multiply(5, 3)        # => 15
+p multiply(2, 4)        # => 8
+p multiply(0, 10)       # => 0
+p multiply(-3, -6)      # => 18
+p multiply(3, -6)       # => -18
+p multiply(-3, 6)       # => -18
