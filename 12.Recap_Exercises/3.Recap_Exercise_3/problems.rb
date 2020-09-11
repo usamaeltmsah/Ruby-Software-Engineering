@@ -35,3 +35,33 @@ end
 # Examples
 p char_indices('mississippi')   # => {"m"=>[0], "i"=>[1, 4, 7, 10], "s"=>[2, 3, 5, 6], "p"=>[8, 9]}
 p char_indices('classroom')     # => {"c"=>[0], "l"=>[1], "a"=>[2], "s"=>[3, 4], "r"=>[5], "o"=>[6, 7], "m"=>[8]}
+
+def longest_streak(str)
+    last_long = ""
+    cur_long = str[0]
+    (1...str.length).each do |i|
+        if str[i-1] == str[i]
+            cur_long += str[i]
+        else
+            last_long = check_longest(last_long, cur_long)
+            cur_long = str[i]
+        end
+    end
+    check_longest(last_long, cur_long)
+end
+
+def check_longest(str1, str2)
+    is_great_equal = str1.length <=> str2.length
+    if is_great_equal <= 0
+        str2
+    else
+        str1
+    end
+end
+
+# Examples
+p longest_streak('a')           # => 'a'
+p longest_streak('accccbbb')    # => 'cccc'
+p longest_streak('aaaxyyyyyzz') # => 'yyyyy'
+p longest_streak('aaabbb')      # => 'bbb'
+p longest_streak('abc')         # => 'c'
