@@ -59,6 +59,15 @@ class Array
     #
     # This should remind you of the spaceship operator! Convenient :)
     def bubble_sort(&prc)
-
+        prc ||= Proc.new { |a, b| a <=> b}
+        len = self.length
+        (0...len).each do |i|
+            (i...len).each do |j|
+                if prc.call(self[i], self[j]) == 1
+                    self[i], self[j] = self[j], self[i]
+                end
+            end
+        end
+        self
     end
 end
