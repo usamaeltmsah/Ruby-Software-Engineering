@@ -202,3 +202,21 @@ p multiply(0, 10)       # => 0
 p multiply(-3, -6)      # => 18
 p multiply(3, -6)       # => -18
 p multiply(-3, 6)       # => -18
+
+# ----------------------------------------------------------------------------
+
+def lucas_sequence(num)
+    return [] if num == 0
+    return [2] if num == 1
+    arr = [2, 1]
+    (2...num).each { |i| arr << arr[i-1] + arr[i-2]}
+    arr
+end
+
+# Examples
+p lucas_sequence(0)   # => []
+p lucas_sequence(1)   # => [2]    
+p lucas_sequence(2)   # => [2, 1]
+p lucas_sequence(3)   # => [2, 1, 3]
+p lucas_sequence(6)   # => [2, 1, 3, 4, 7, 11]
+p lucas_sequence(8)   # => [2, 1, 3, 4, 7, 11, 18, 29]
