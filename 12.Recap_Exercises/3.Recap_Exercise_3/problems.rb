@@ -36,6 +36,8 @@ end
 p char_indices('mississippi')   # => {"m"=>[0], "i"=>[1, 4, 7, 10], "s"=>[2, 3, 5, 6], "p"=>[8, 9]}
 p char_indices('classroom')     # => {"c"=>[0], "l"=>[1], "a"=>[2], "s"=>[3, 4], "r"=>[5], "o"=>[6, 7], "m"=>[8]}
 
+# ----------------------------------------------------------------------------
+
 def longest_streak(str)
     last_long = ""
     cur_long = str[0]
@@ -65,3 +67,28 @@ p longest_streak('accccbbb')    # => 'cccc'
 p longest_streak('aaaxyyyyyzz') # => 'yyyyy'
 p longest_streak('aaabbb')      # => 'bbb'
 p longest_streak('abc')         # => 'c'
+
+# ----------------------------------------------------------------------------
+
+def bi_prime?(num)
+    return false if num < 4
+    (2...num).each do |i|
+        (2...num).each do |j|
+            return true if prime?(i) && prime?(j) && num == i * j
+        end
+    end
+    return false
+end
+
+def prime?(num)
+    (2...num).each { |i| return false if num % i == 0 }
+    true
+end
+
+# Examples
+p bi_prime?(14)   # => true
+p bi_prime?(22)   # => true
+p bi_prime?(25)   # => true
+p bi_prime?(94)   # => true
+p bi_prime?(24)   # => false
+p bi_prime?(64)   # => false
