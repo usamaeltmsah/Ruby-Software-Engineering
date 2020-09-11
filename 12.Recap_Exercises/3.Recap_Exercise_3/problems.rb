@@ -92,3 +92,24 @@ p bi_prime?(25)   # => true
 p bi_prime?(94)   # => true
 p bi_prime?(24)   # => false
 p bi_prime?(64)   # => false
+
+# ----------------------------------------------------------------------------
+
+def vigenere_cipher(message, keys)
+    alphabets = ('a'..'z').to_a.join
+    new_str = ""
+    keys_len = keys.length
+    message.each_char.with_index do |ch, j|
+        keys_ind = j % keys_len
+        new_ind = (alphabets.index(ch) + keys[keys_ind]) % 26
+        new_str += alphabets[new_ind]
+    end
+    new_str
+end
+
+# Examples
+p vigenere_cipher("toerrishuman", [1])        # => "upfssjtivnbo"
+p vigenere_cipher("toerrishuman", [1, 2])     # => "uqftsktjvobp"
+p vigenere_cipher("toerrishuman", [1, 2, 3])  # => "uqhstltjxncq"
+p vigenere_cipher("zebra", [3, 0])            # => "ceerd"
+p vigenere_cipher("yawn", [5, 1])             # => "dbbo"
