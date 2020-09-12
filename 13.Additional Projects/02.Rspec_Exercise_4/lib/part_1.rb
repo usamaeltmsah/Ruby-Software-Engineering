@@ -14,3 +14,9 @@ def hash_select(hash, &prc)
     hash.each { |k, v| new_hash[k] = v if prc.call(k, v) }
     new_hash
 end
+
+def xor_select(arr, prc1, prc2)
+    new_arr = []
+    arr.each { |el| new_arr << el if (prc1.call(el) || prc2.call(el)) == true && !(prc1.call(el) && prc2.call(el)) == true }
+    new_arr
+end
