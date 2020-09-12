@@ -3,3 +3,9 @@ def element_count(arr)
     arr.each { |el| count[el] += 1 }
     count
 end
+
+def char_replace!(str, hash)
+    keys = hash.keys
+    str.each_char.with_index { |ch, i| str[i] = hash[ch] if keys.include?(ch) }
+    str
+end
