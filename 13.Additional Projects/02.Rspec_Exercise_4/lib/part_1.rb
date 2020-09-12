@@ -8,3 +8,9 @@ def my_one?(arr, &prc)
     return true if c == 1
     return false
 end
+
+def hash_select(hash, &prc)
+    new_hash = {}
+    hash.each { |k, v| new_hash[k] = v if prc.call(k, v) }
+    new_hash
+end
