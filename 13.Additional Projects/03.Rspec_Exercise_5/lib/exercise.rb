@@ -5,3 +5,9 @@ def zip(*arrs)
     end
     two_d_arr
 end
+
+def prizz_proc(arr, prc1, prc2)
+    new_arr = []
+    arr.each { |el| new_arr << el if (prc1.call(el) && prc2.call(el)) == false && (prc1.call(el) || prc2.call(el)) == true }
+    new_arr
+end
