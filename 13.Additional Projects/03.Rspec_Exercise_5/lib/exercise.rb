@@ -42,3 +42,28 @@ def max_tie_breaker(arr, len, &prc)
     arr.each { |el| maxi = el if prc.call(el, len) > prc.call(maxi, len) }
     maxi
 end
+
+def silly_syllables(sent)
+    words = sent.split
+    new_words = words.map do |w|
+        n_vowels = vowel_indices(w).length
+        if n_vowels < 2
+            w
+        else
+            change_word(w)
+        end
+    end
+    new_words.join(" ")
+end
+
+def vowel_indices(str)
+    vowels = "aeiou"
+    indices = []
+    str.each_char.with_index { |ch, i| indices << i if vowels.include?(ch) }
+    indices
+end
+
+def change_word(str)
+    vowels_indices = vowel_indices(str)
+    str[vowels_indices[0]..vowels_indices[-1]]
+end
