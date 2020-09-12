@@ -9,3 +9,7 @@ def char_replace!(str, hash)
     str.each_char.with_index { |ch, i| str[i] = hash[ch] if keys.include?(ch) }
     str
 end
+
+def product_inject(arr)
+    arr.inject { |acc, i| acc * i}
+end
