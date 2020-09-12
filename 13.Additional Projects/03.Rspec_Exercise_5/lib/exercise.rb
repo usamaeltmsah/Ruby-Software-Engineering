@@ -30,3 +30,9 @@ def maximum(arr, &prc)
     arr.each { |el| maxi = el if prc.call(el) >= prc.call(maxi)}
     maxi
 end
+
+def my_group_by(arr, &prc)
+    hash = Hash.new { |h, k| h[k] = [] }
+    arr.each { |el| hash[prc.call(el)] << el }
+    hash
+end
