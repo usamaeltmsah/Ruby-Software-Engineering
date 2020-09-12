@@ -24,3 +24,9 @@ def zany_zip(*arrs)
     end
     two_d_arr
 end
+
+def maximum(arr, &prc)
+    maxi = arr[0]
+    arr.each { |el| maxi = el if prc.call(el) >= prc.call(maxi)}
+    maxi
+end
