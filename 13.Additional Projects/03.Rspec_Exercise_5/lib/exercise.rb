@@ -11,3 +11,16 @@ def prizz_proc(arr, prc1, prc2)
     arr.each { |el| new_arr << el if (prc1.call(el) && prc2.call(el)) == false && (prc1.call(el) || prc2.call(el)) == true }
     new_arr
 end
+
+def zany_zip(*arrs)
+    max_len = 0
+    arrs.each { |arr| max_len = arr.length if max_len < arr.length }
+
+    two_d_arr = Array.new(max_len) { Array.new(arrs.length) }
+    arrs.each_with_index do |arr, i|
+        arr.each_with_index do |el, j| 
+            two_d_arr[j][i] = el
+        end
+    end
+    two_d_arr
+end
