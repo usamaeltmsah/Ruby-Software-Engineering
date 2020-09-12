@@ -13,3 +13,18 @@ def perfect_number?(num)
     return true if num == aliquot_sum(num)
     return false
 end
+
+def ideal_numbers(n)
+    i = 1
+    j = 6        # First ideal
+    perfect_numbers = []
+    while i <= n
+        while !perfect_number?(j)
+            j += 1
+        end
+        i += 1
+        perfect_numbers << j
+        j += 1
+    end
+    perfect_numbers
+end
