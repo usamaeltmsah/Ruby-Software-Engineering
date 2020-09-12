@@ -20,3 +20,9 @@ def xor_select(arr, prc1, prc2)
     arr.each { |el| new_arr << el if (prc1.call(el) || prc2.call(el)) == true && !(prc1.call(el) && prc2.call(el)) == true }
     new_arr
 end
+
+def proc_count(val, prcs)
+    c = 0
+    prcs.each { |prc| c += 1 if prc.call(val) == true }
+    c
+end
