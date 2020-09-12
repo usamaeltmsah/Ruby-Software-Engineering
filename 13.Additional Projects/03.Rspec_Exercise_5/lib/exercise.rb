@@ -36,3 +36,9 @@ def my_group_by(arr, &prc)
     arr.each { |el| hash[prc.call(el)] << el }
     hash
 end
+
+def max_tie_breaker(arr, len, &prc)
+    maxi = arr[0]
+    arr.each { |el| maxi = el if prc.call(el, len) > prc.call(maxi, len) }
+    maxi
+end
