@@ -16,3 +16,9 @@ def nth_prime(n)
     end
     prime
 end
+
+def prime_range(min, max)
+    primes = []
+    (min..max).each { |i| primes << i if is_prime?(i) }
+    primes
+end
