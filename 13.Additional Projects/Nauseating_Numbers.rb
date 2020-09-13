@@ -314,7 +314,7 @@ print_2d_arr pascals_triangle(7)
 # ---------------------------------------------------------------------------------------------------------------
 
 def mersenne_prime(num)
-    2 ** nth_prime(num) - 1
+    2 ** nth_mersenne_prime(num) - 1
 end
 
 def is_prime?(num)
