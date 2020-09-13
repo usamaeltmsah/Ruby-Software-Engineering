@@ -229,3 +229,39 @@ p squarocol?([
     [0, 5, 2, 7],
     [4, 2, 9, 7],
 ]) # false
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def squaragonal?(mat)
+    row = col = mat.length
+    dig_1 = (0...row-1).all? { |i| (mat[i][i] == mat[i+1][i+1]) }
+    dig_2 = (0...col-1).all? { |i| (mat[i][col-i-1] == mat[i+1][col-i-2]) }
+    return dig_1 || dig_2
+end
+
+puts
+p squaragonal?([
+    [:x, :y, :o],
+    [:x, :x, :x],
+    [:o, :o, :x],
+]) # true
+
+p squaragonal?([
+    [:x, :y, :o],
+    [:x, :o, :x],
+    [:o, :o, :x],
+]) # true
+
+p squaragonal?([
+    [1, 2, 2, 7],
+    [1, 1, 6, 7],
+    [0, 5, 1, 7],
+    [4, 2, 9, 1],
+]) # true
+
+p squaragonal?([
+    [1, 2, 2, 5],
+    [1, 6, 5, 0],
+    [0, 2, 2, 7],
+    [5, 2, 9, 7],
+]) # false
