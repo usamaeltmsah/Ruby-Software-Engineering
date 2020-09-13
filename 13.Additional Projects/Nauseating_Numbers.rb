@@ -57,3 +57,33 @@ p perfect_square?(2)     # false
 p perfect_square?(40)    # false
 p perfect_square?(32)    # false
 p perfect_square?(50)    # false
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def anti_prime?(num)
+    (num-1).downto(1).each { |i| return false if divisors_of(i).length >  divisors_of(num).length }
+    return true
+end
+
+def divisors_of(num)
+    divisors = []
+    i = 2
+    while i < num
+        if num % i == 0
+            divisors << i
+            num /= i
+        end
+        i += 1
+    end
+    divisors
+end
+
+p anti_prime?(36)   # true
+p anti_prime?(48)   # true
+p anti_prime?(360)  # true
+p anti_prime?(1260) # true
+p anti_prime?(27)   # false
+p anti_prime?(5)    # false
+p anti_prime?(100)  # false
+p anti_prime?(136)  # false
+p anti_prime?(1024) # false
