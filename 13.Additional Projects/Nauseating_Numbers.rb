@@ -130,3 +130,22 @@ p mutual_factors(22, 44)            # [1, 2, 11, 22]
 p mutual_factors(22, 44, 11)        # [1, 11]
 p mutual_factors(7)                 # [1, 7]
 p mutual_factors(7, 9)              # [1]
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def tribonacci_number(num)
+    return 1 if num == 1 || num == 2
+    tribon = [0, 1, 1, 2]
+    (4..num).each { |i| tribon << tribon[i-1] + tribon[i-2] + tribon[i-3] }
+    tribon[-1]
+    #tribonacci_number(num - 1) + tribonacci_number(num - 2) + tribonacci_number(num - 3)
+end
+
+p tribonacci_number(1)  # 1
+p tribonacci_number(2)  # 1
+p tribonacci_number(3)  # 2
+p tribonacci_number(4)  # 4
+p tribonacci_number(5)  # 7
+p tribonacci_number(6)  # 13
+p tribonacci_number(7)  # 24
+p tribonacci_number(11) # 274
