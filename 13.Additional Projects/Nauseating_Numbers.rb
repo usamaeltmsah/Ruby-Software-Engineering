@@ -341,3 +341,26 @@ p mersenne_prime(2) # 7
 p mersenne_prime(3) # 31
 p mersenne_prime(4) # 127
 p mersenne_prime(6) # 131071
+
+# ---------------------------------------------------------------------------------------------------------------
+
+Alphabets = ("a".."z").to_a
+def triangular_word?(str)
+    sum = 0
+    str.each_char { |ch| sum += Alphabets.index(ch)+1 }
+    return triangular_number?(sum)
+end
+
+def triangular_number?(num)
+    (0..num).each { |i| return true if num == (i * (i+1)) / 2 }
+    return false
+end
+
+p triangular_word?('abc')       # true
+p triangular_word?('ba')        # true
+p triangular_word?('lovely')    # true
+p triangular_word?('question')  # true
+p triangular_word?('aa')        # false
+p triangular_word?('cd')        # false
+p triangular_word?('cat')       # false
+p triangular_word?('sink')      # false
