@@ -180,3 +180,52 @@ p matrix_addition_reloaded(matrix_e)                        # [[0, 0], [12, 4], 
 p matrix_addition_reloaded(matrix_d, matrix_e)              # [[2, -5], [19, 14], [6, 4]]
 p matrix_addition_reloaded(matrix_a, matrix_b, matrix_e)    # nil
 p matrix_addition_reloaded(matrix_d, matrix_e, matrix_c)    # nil
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def squarocol?(mat)
+    row = mat.length
+    col = mat[0].length
+    (0...row).each do |i|
+        row_count = 0
+        col_count = 0
+        (0...col-1).each do |j|
+            row_count += 1 if mat[i][j] == mat[i][j+1]
+            col_count += 1 if mat[j][i] == mat[j+1][i]
+        end
+        return true if row_count == row - 1 || col_count == col - 1
+    end
+    return false
+end
+
+p squarocol?([
+    [:a, :x , :d],
+    [:b, :x , :e],
+    [:c, :x , :f],
+]) # true
+
+p squarocol?([
+    [:x, :y, :x],
+    [:x, :z, :x],
+    [:o, :o, :o],
+]) # true
+
+p squarocol?([
+    [:o, :x , :o],
+    [:x, :o , :x],
+    [:o, :x , :o],
+]) # false
+
+p squarocol?([
+    [1, 2, 2, 7],
+    [1, 6, 6, 7],
+    [0, 5, 2, 7],
+    [4, 2, 9, 7],
+]) # true
+
+p squarocol?([
+    [1, 2, 2, 7],
+    [1, 6, 6, 0],
+    [0, 5, 2, 7],
+    [4, 2, 9, 7],
+]) # false
