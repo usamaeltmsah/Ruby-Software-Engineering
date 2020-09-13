@@ -149,3 +149,34 @@ p tribonacci_number(5)  # 7
 p tribonacci_number(6)  # 13
 p tribonacci_number(7)  # 24
 p tribonacci_number(11) # 274
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def matrix_addition_reloaded(*arrs)
+    return arrs[0] if arrs.length == 1
+    row = arrs[0].length
+    col = arrs[0][0].length
+    arrs.each { |mat| return nil if row != mat.length || col != mat[0].length }
+    sum_mat = Array.new(row) { Array.new(col, 0) }
+    arrs.each do |mat|
+        (0...row).each do |i|
+            (0...col).each do |j|
+                sum_mat[i][j] += mat[i][j]
+            end
+        end
+    end
+    sum_mat
+end
+
+matrix_a = [[2,5], [4,7]]
+matrix_b = [[9,1], [3,0]]
+matrix_c = [[-1,0], [0,-1]]
+matrix_d = [[2, -5], [7, 10], [0, 1]]
+matrix_e = [[0 , 0], [12, 4], [6,  3]]
+
+p matrix_addition_reloaded(matrix_a, matrix_b)              # [[11, 6], [7, 7]]
+p matrix_addition_reloaded(matrix_a, matrix_b, matrix_c)    # [[10, 6], [7, 6]]
+p matrix_addition_reloaded(matrix_e)                        # [[0, 0], [12, 4], [6, 3]]
+p matrix_addition_reloaded(matrix_d, matrix_e)              # [[2, -5], [19, 14], [6, 4]]
+p matrix_addition_reloaded(matrix_a, matrix_b, matrix_e)    # nil
+p matrix_addition_reloaded(matrix_d, matrix_e, matrix_c)    # nil
