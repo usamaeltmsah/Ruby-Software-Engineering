@@ -67,11 +67,10 @@ end
 
 def divisors_of(num)
     divisors = []
-    i = 2
-    while i < num
+    i = 1
+    while i <= num
         if num % i == 0
             divisors << i
-            num /= i
         end
         i += 1
     end
@@ -112,3 +111,22 @@ p matrix_addition(matrix_a, matrix_b) # [[11, 6], [7, 7]]
 p matrix_addition(matrix_a, matrix_c) # [[1, 5], [4, 6]]
 p matrix_addition(matrix_b, matrix_c) # [[8, 1], [3, -1]]
 p matrix_addition(matrix_d, matrix_e) # [[2, -5], [19, 14], [6, 4]]
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def mutual_factors(*nums)
+    divisors = divisors_of(nums[0])
+    nums.each { |num| divisors &= divisors_of(num) }
+    divisors
+end
+
+p mutual_factors(50, 30)            # [1, 2, 5, 10]
+p mutual_factors(50, 30, 45, 105)   # [1, 5]
+p mutual_factors(8, 4)              # [1, 2, 4]
+p mutual_factors(8, 4, 10)          # [1, 2]
+p mutual_factors(12, 24)            # [1, 2, 3, 4, 6, 12]
+p mutual_factors(12, 24, 64)        # [1, 2, 4]
+p mutual_factors(22, 44)            # [1, 2, 11, 22]
+p mutual_factors(22, 44, 11)        # [1, 11]
+p mutual_factors(7)                 # [1, 7]
+p mutual_factors(7, 9)              # [1]
