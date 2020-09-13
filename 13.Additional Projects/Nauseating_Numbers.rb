@@ -310,3 +310,34 @@ print_2d_arr pascals_triangle(7)
 #     [1, 5, 10, 10, 5, 1],
 #     [1, 6, 15, 20, 15, 6, 1]
 # ]
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def mersenne_prime(num)
+    2 ** nth_prime(num) - 1
+end
+
+def is_prime?(num)
+    return false if num < 2
+    (2...num).each.all? { |i| num % i != 0  }
+end
+
+def nth_mersenne_prime(n)
+    i = 1
+    j = 2
+    while i <= n
+        while !is_prime?(j) || !is_prime?(2**j-1)
+            j += 1
+        end
+        i += 1
+        prime = j
+        j += 1
+    end
+    prime
+end
+
+p mersenne_prime(1) # 3
+p mersenne_prime(2) # 7
+p mersenne_prime(3) # 31
+p mersenne_prime(4) # 127
+p mersenne_prime(6) # 131071
