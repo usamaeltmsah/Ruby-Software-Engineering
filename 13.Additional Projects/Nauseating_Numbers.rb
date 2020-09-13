@@ -265,3 +265,48 @@ p squaragonal?([
     [0, 2, 2, 7],
     [5, 2, 9, 7],
 ]) # false
+
+# ---------------------------------------------------------------------------------------------------------------
+
+def pascals_triangle(num)
+    trings = [[1], [1, 1]]
+    (2...num).each do |i|
+        tmp_tring = []
+        tring = trings[i-1]
+        (0..i).each do |j|
+            if j > 0 && j < i
+                tmp_tring << tring[j] + tring[j-1]
+            elsif j == 0
+                tmp_tring << tring[j]
+            else
+                tmp_tring << tring[-1]
+            end
+        end
+        trings << tmp_tring
+    end
+    trings
+end
+
+def print_2d_arr(mat)
+    mat.each { |sub| p sub.join(" ") }
+end
+
+print_2d_arr pascals_triangle(5)
+# [
+#     [1],
+#     [1, 1],
+#     [1, 2, 1],
+#     [1, 3, 3, 1],
+#     [1, 4, 6, 4, 1]
+# ]
+
+print_2d_arr pascals_triangle(7)
+# [
+#     [1],
+#     [1, 1],
+#     [1, 2, 1],
+#     [1, 3, 3, 1],
+#     [1, 4, 6, 4, 1],
+#     [1, 5, 10, 10, 5, 1],
+#     [1, 6, 15, 20, 15, 6, 1]
+# ]
