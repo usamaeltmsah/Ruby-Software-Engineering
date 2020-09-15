@@ -92,3 +92,17 @@ p at_most?([4, 100, 3], 1) { |el| el > 0 }                           # false
 p at_most?(['r', 'q', 'e', 'z'], 2) { |el| 'aeiou'.include?(el) }    # true
 p at_most?(['r', 'i', 'e', 'z'], 2) { |el| 'aeiou'.include?(el) }    # true
 p at_most?(['r', 'i', 'e', 'o'], 2) { |el| 'aeiou'.include?(el) }    # false
+
+# ----------------------------------------------------------------------------
+
+def first_index(arr, &prc)
+    arr.each_with_index { |el, i| return i if prc.call(el) }
+    return nil
+end
+
+p first_index(['bit', 'cat', 'byte', 'below']) { |el| el.length > 3 }           # 2
+p first_index(['bitten', 'bit', 'cat', 'byte', 'below']) { |el| el.length > 3 } # 0
+p first_index(['bitten', 'bit', 'cat', 'byte', 'below']) { |el| el.length > 6 } # nil
+p first_index(['bit', 'cat', 'byte', 'below']) { |el| el[0] == 'b' }            # 0
+p first_index(['bit', 'cat', 'byte', 'below']) { |el| el.include?('a') }        # 1
+p first_index(['bit', 'cat', 'byte', 'below']) { |el| el[0] == 't' }            # nil
