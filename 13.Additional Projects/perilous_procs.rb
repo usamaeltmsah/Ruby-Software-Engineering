@@ -170,3 +170,21 @@ p multi_map(['pretty', 'cool', 'huh?'], 3) { |s| s + '!'}   # ["pretty!!!", "coo
 p multi_map([4, 3, 2, 7], 1) { |num| num * 10 }             # [40, 30, 20, 70]
 p multi_map([4, 3, 2, 7], 2) { |num| num * 10 }             # [400, 300, 200, 700]
 p multi_map([4, 3, 2, 7], 4) { |num| num * 10 }             # [40000, 30000, 20000, 70000]
+
+# ----------------------------------------------------------------------------
+
+def proctition(arr, &prc)
+    accepted, rejected = [], []
+    arr.each do |el|
+        if prc.call(el)
+            accepted << el
+        else
+            rejected << el
+        end
+    end
+    accepted + rejected
+end
+
+p proctition([4, -5, 7, -10, -2, 1, 3]) { |el| el > 0 } # [4, 7, 1, 3, -5, -10, -2]
+p proctition([7, 8, 3, 6, 10]) { |el| el.even? } # [8, 6, 10, 7, 3]
+p proctition(['cat','boot', 'dog', 'bug', 'boat']) { |s| s[0] == 'b' } # ["boot", "bug", "boat", "cat", "dog"]
