@@ -75,3 +75,20 @@ p every?([8, 2]) { |n| n.even? }                                        # true
 p every?(['squash', 'corn', 'kale', 'carrot']) { |str| str[0] == 'p' }  # false
 p every?(['squash', 'pea', 'kale', 'potato']) { |str| str[0] == 'p' }   # false
 p every?(['parsnip', 'potato', 'pea']) { |str| str[0] == 'p' }          # true
+
+# ----------------------------------------------------------------------------
+
+def at_most?(arr, n, &prc)
+    c = 0
+    arr.each { |el| c += 1 if prc.call(el) }
+    return true if c <= n
+    false
+end
+
+p at_most?([-4, 100, -3], 1) { |el| el > 0 }                         # true
+p at_most?([-4, -100, -3], 1) { |el| el > 0 }                        # true
+p at_most?([4, 100, -3], 1) { |el| el > 0 }                          # false
+p at_most?([4, 100, 3], 1) { |el| el > 0 }                           # false
+p at_most?(['r', 'q', 'e', 'z'], 2) { |el| 'aeiou'.include?(el) }    # true
+p at_most?(['r', 'i', 'e', 'z'], 2) { |el| 'aeiou'.include?(el) }    # true
+p at_most?(['r', 'i', 'e', 'o'], 2) { |el| 'aeiou'.include?(el) }    # false
