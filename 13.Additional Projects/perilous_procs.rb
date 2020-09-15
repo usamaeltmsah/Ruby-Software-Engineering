@@ -217,3 +217,21 @@ p arr_2                                     # [10, -4, 7, -6, 2, -9]
 arr_3 = [-10, 4, 7, 6, -2, -9]
 p selected_map!(arr_3, is_positive, square) # nil
 p arr_3                                     # [-10, 16, 49, 36, -2, -9]
+
+# ----------------------------------------------------------------------------
+
+def chain_map(num, prcs=nil)
+    prcs ||= [Proc.new { |n| n }]
+    prcs.each { |prc| num = prc.call(num) }
+    num
+end
+
+add_5 = Proc.new { |n| n + 5 }
+half = Proc.new { |n| n / 2.0 }
+square = Proc.new { |n| n * n }
+
+p chain_map(25, [add_5, half])          # 15.0
+p chain_map(25, [half, add_5])          # 17.5
+p chain_map(25, [add_5, half, square])  # 225
+p chain_map(4, [square, half])          # 8
+p chain_map(4, [half, square])          # 4
