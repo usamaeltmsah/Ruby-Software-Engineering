@@ -28,3 +28,16 @@ p exactly?(['cat', 'dog', 'bird'], 0) { |el| el == el.upcase }  # true
 p exactly?([4, 5], 3) { |n| n > 0 }                             # false
 p exactly?([4, 5, 2], 3) { |n| n > 0 }                          # true
 p exactly?([42, -9, 7, -3, -6], 2) { |n| n > 0 }                # true
+
+# ----------------------------------------------------------------------------
+
+def filter_out(arr, &prc)
+    filtered = []
+    arr.each { |el| filtered << el if !prc.call(el) }
+    filtered
+end
+
+p filter_out([10, 6, 3, 2, 5 ]) { |x| x.odd? }      # [10, 6, 2]
+p filter_out([1, 7, 3, 5 ]) { |x| x.odd? }          # []
+p filter_out([10, 6, 3, 2, 5 ]) { |x| x.even? }     # [3, 5]
+p filter_out([1, 7, 3, 5 ]) { |x| x.even? }         # [1, 7, 3, 5]
