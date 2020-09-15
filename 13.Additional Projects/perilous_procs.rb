@@ -268,3 +268,40 @@ p proc_suffix('food glad rant dog cat',
     contains_a => 'ly',
     three_letters => 'o'
 )   # "fooding gladingly rantingly dogo catlyo"
+
+# ----------------------------------------------------------------------------
+
+def proctition_platinum(arr, *prcs)
+    hash = {}
+    prcs.each_with_index { |prc, i|
+        j = 0
+        tmp_arr = []
+        while j < arr.length
+            el = arr[j]
+            if prc.call(el)
+                tmp_arr << arr.delete_at(j)
+                next
+            end
+            j += 1
+        end
+        hash[i+1] = tmp_arr
+    }
+    hash
+end
+
+is_yelled = Proc.new { |s| s[-1] == '!' }
+is_upcase = Proc.new { |s| s.upcase == s }
+contains_a = Proc.new { |s| s.downcase.include?('a') }
+begins_w = Proc.new { |s| s.downcase[0] == 'w' }
+
+p proctition_platinum(['WHO', 'what', 'when!', 'WHERE!', 'how', 'WHY'], is_yelled, contains_a)
+# {1=>["when!", "WHERE!"], 2=>["what"]}
+
+p proctition_platinum(['WHO', 'what', 'when!', 'WHERE!', 'how', 'WHY'], is_yelled, is_upcase, contains_a)
+# {1=>["when!", "WHERE!"], 2=>["WHO", "WHY"], 3=>["what"]}
+
+p proctition_platinum(['WHO', 'what', 'when!', 'WHERE!', 'how', 'WHY'], is_upcase, is_yelled, contains_a)
+# {1=>["WHO", "WHERE!", "WHY"], 2=>["when!"], 3=>["what"]}
+
+p proctition_platinum(['WHO', 'what', 'when!', 'WHERE!', 'how', 'WHY'], begins_w, is_upcase, is_yelled, contains_a)
+# {1=>["WHO", "what", "when!", "WHERE!", "WHY"], 2=>[], 3=>[], 4=>[]}
