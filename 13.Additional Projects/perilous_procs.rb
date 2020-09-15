@@ -235,3 +235,36 @@ p chain_map(25, [half, add_5])          # 17.5
 p chain_map(25, [add_5, half, square])  # 225
 p chain_map(4, [square, half])          # 8
 p chain_map(4, [half, square])          # 4
+
+# ----------------------------------------------------------------------------
+
+def proc_suffix(sent, hash)
+    words = sent.split
+    words.each_with_index { |w, i| hash.each { |k, v| words[i] += v if k.call(w) } }.join(" ")
+end
+
+contains_a = Proc.new { |w| w.include?('a') }
+three_letters = Proc.new { |w| w.length == 3 }
+four_letters = Proc.new { |w| w.length == 4 }
+
+p proc_suffix('dog cat',
+    contains_a => 'ly',
+    three_letters => 'o'
+)   # "dogo catlyo"
+
+p proc_suffix('dog cat',
+    three_letters => 'o',
+    contains_a => 'ly'
+)   # "dogo catoly"
+
+p proc_suffix('wrong glad cat',
+    contains_a => 'ly',
+    three_letters => 'o',
+    four_letters => 'ing'
+)   # "wrong gladlying catlyo"
+
+p proc_suffix('food glad rant dog cat',
+    four_letters => 'ing',
+    contains_a => 'ly',
+    three_letters => 'o'
+)   # "fooding gladingly rantingly dogo catlyo"
