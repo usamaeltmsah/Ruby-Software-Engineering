@@ -106,3 +106,19 @@ p first_index(['bitten', 'bit', 'cat', 'byte', 'below']) { |el| el.length > 6 } 
 p first_index(['bit', 'cat', 'byte', 'below']) { |el| el[0] == 'b' }            # 0
 p first_index(['bit', 'cat', 'byte', 'below']) { |el| el.include?('a') }        # 1
 p first_index(['bit', 'cat', 'byte', 'below']) { |el| el[0] == 't' }            # nil
+
+# ----------------------------------------------------------------------------
+# ----------------------------------------------------------------------------
+
+### Phase 2: The proc thickens.
+
+def xnor_select(arr, prc1, prc2)
+    arr.select { |el| el if (prc1.call(el) && prc2.call(el)) || !(prc1.call(el) || prc2.call(el)) }
+end
+
+is_even = Proc.new { |n| n % 2 == 0 }
+is_odd = Proc.new { |n| n % 2 != 0 }
+is_positive = Proc.new { |n| n > 0 }
+p xnor_select([8, 3, -4, -5], is_even, is_positive)         # [8, -5]
+p xnor_select([-7, -13, 12, 5, -10], is_even, is_positive)  # [-7, -13, 12]
+p xnor_select([-7, -13, 12, 5, -10], is_odd, is_positive)   # [5, -10]
