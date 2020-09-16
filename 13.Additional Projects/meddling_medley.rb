@@ -102,3 +102,15 @@ p energetic_encoding('hello world',
 ) # '?arri ?i?r?'
 
 p energetic_encoding('bike', {}) # '????'
+
+# ---------------------------------------------------------------------------------
+
+def uncompress(str)
+    new_str = ""
+    (0...str.length-1).each { |i| new_str += str[i] * (str[i+1]).to_i }
+    new_str
+end
+
+p uncompress('a2b4c1') # 'aabbbbc'
+p uncompress('b1o2t1') # 'boot'
+p uncompress('x3y1x2z4') # 'xxxyxxzzzz'
