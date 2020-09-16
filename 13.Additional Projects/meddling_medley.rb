@@ -203,3 +203,37 @@ p reverberate('We like to go running fast') # "We likelike to go runninging fast
 p reverberate('He cannot find the trash') # "He cannotot findind thethe trashash"
 p reverberate('Pasta is my favorite dish') # "Pastapasta is my favoritefavorite dishish"
 p reverberate('Her family flew to France') # "Herer familyily flewew to Francefrance"
+
+# ---------------------------------------------------------------------------------
+
+def disjunct_select(arr, *prcs)
+    selected = []
+    arr.each do |el|
+        prcs.each do |prc| 
+            if prc.call(el)
+                selected << el
+                break
+            end
+        end
+    end
+    selected
+end
+
+longer_four = Proc.new { |s| s.length > 4 }
+contains_o = Proc.new { |s| s.include?('o') }
+starts_a = Proc.new { |s| s[0] == 'a' }
+
+p disjunct_select(['ace', 'dog', 'apple', 'teeming', 'boot', 'zip'],
+    longer_four,
+) # ["apple", "teeming"]
+
+p disjunct_select(['ace', 'dog', 'apple', 'teeming', 'boot', 'zip'],
+    longer_four,
+    contains_o
+) # ["dog", "apple", "teeming", "boot"]
+
+p disjunct_select(['ace', 'dog', 'apple', 'teeming', 'boot', 'zip'],
+    longer_four,
+    contains_o,
+    starts_a
+) # ["ace", "dog", "apple", "teeming", "boot"]
