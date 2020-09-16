@@ -132,3 +132,38 @@ less_than_ten = Proc.new { |n| n < 10 }
 p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive) # [4, 8, 11, 7, 13]
 p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive, is_odd) # [11, 7, 13]
 p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive, is_odd, less_than_ten) # [7]
+
+
+def convert_pig_latin(str)
+    vowels = "aeiou"
+    words = str.split
+    words.each_with_index do |w, i|
+        # Do nothing if len < 3
+        if w.length < 3
+            next
+            # If first is vowel add "yay" at the end
+        elsif vowels.include?(w[0].downcase)
+            words[i] += "yay"
+            # Otherwise, Go untill finding a vowel and add all the words before it at the end
+        else
+            first_vowel_ind = nil
+            (0...w.length).each do |j|
+                if vowels.include?(w[j])
+                    first_vowel_ind = j 
+                    break
+                end
+            end
+            tmp = w[first_vowel_ind..] + w[0...first_vowel_ind] + "ay"
+            # If words are capitalized in the original sentence, they should remain capitalized in the translated sentence
+            tmp.capitalize! if words[i].capitalize == words[i]
+            words[i] = tmp
+        end
+    end
+    words.join(" ")
+end
+
+p convert_pig_latin('We like to eat bananas') # "We ikelay to eatyay ananasbay"
+p convert_pig_latin('I cannot find the trash') # "I annotcay indfay ethay ashtray"
+p convert_pig_latin('What an interesting problem') # "Atwhay an interestingyay oblempray"
+p convert_pig_latin('Her family flew to France') # "Erhay amilyfay ewflay to Ancefray"
+p convert_pig_latin('Our family flew to France') # "Ouryay amilyfay ewflay to Ancefray"
