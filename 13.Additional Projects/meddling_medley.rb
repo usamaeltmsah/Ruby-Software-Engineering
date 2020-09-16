@@ -48,3 +48,16 @@ p hash_mapped({'a'=>4, 'x'=>7, 'c'=>-3}, double) { |k| k.upcase + '!!' }
 first = Proc.new { |a| a[0] }
 p hash_mapped({-5=>['q', 'r', 's'], 6=>['w', 'x']}, first) { |n| n * n }
 # {25=>"q", 36=>"w"}
+
+# ---------------------------------------------------------------------------------
+
+def counted_characters(str)
+    count = Hash.new(0)
+    str.each_char { |ch| count[ch] += 1 }
+    count.keys.select { |k| count[k] > 2 }
+end
+
+p counted_characters("that's alright folks") # ["t"]
+p counted_characters("mississippi") # ["i", "s"]
+p counted_characters("hot potato soup please") # ["o", "t", " ", "p"]
+p counted_characters("runtime") # []
