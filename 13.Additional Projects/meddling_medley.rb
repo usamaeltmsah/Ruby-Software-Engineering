@@ -237,3 +237,44 @@ p disjunct_select(['ace', 'dog', 'apple', 'teeming', 'boot', 'zip'],
     contains_o,
     starts_a
 ) # ["ace", "dog", "apple", "teeming", "boot"]
+
+# ---------------------------------------------------------------------------------
+
+def alternating_vowel(str)
+    words = str.split
+    (0...words.length).each do |i|
+        w = words[i]
+        if have_no_vowels(w)
+            next
+        end
+        if i.even?
+            first_vowel_ind = get_first_vowel_ind(w)
+            words[i] = w[0...first_vowel_ind]
+            words[i] += w[first_vowel_ind+1..] if first_vowel_ind < w.length
+        else
+            last_vowel_ind = get_last_vowel_ind(w)
+            words[i] = w[0...last_vowel_ind]
+            words[i] += w[last_vowel_ind+1..] if last_vowel_ind < w.length
+        end
+    end
+    words.join(" ")
+end
+
+VOWELS = "aeiou"
+
+def have_no_vowels(str)
+    !str.each_char.any? { |ch| VOWELS.include?(ch) }
+end
+
+def get_first_vowel_ind(str)
+    str.each_char.with_index { |ch, i| return i if VOWELS.include?(ch) }
+end
+
+def get_last_vowel_ind(str)
+    (str.length-1).downto(0) { |i| return i if VOWELS.include?(str[i]) }
+end
+
+p alternating_vowel('panthers are great animals') # "pnthers ar grat animls"
+p alternating_vowel('running panthers are epic') # "rnning panthrs re epc"
+p alternating_vowel('code properly please') # "cde proprly plase"
+p alternating_vowel('my forecast predicts rain today') # "my forecst prdicts ran tday"
