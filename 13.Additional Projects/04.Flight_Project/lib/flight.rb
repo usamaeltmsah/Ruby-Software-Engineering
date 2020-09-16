@@ -17,4 +17,8 @@ class Flight
     def list_passengers
         @passengers.map { |passenger| passenger.name }
     end
+
+    def [](ind)
+        @passengers[ind]
+    end
 end
