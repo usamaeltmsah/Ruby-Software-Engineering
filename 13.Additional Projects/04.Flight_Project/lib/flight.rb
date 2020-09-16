@@ -21,4 +21,8 @@ class Flight
     def [](ind)
         @passengers[ind]
     end
+
+    def <<(passenger)
+        board_passenger(passenger)
+    end
 end
