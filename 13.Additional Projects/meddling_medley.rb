@@ -75,3 +75,30 @@ p triplet_true?('caaabb')        # true
 p triplet_true?('runninggg')     # true
 p triplet_true?('bootcamp')      # false
 p triplet_true?('e')             # false
+
+# ---------------------------------------------------------------------------------
+
+def energetic_encoding(sent, hash)
+    sent.each_char.with_index do |ch, i|
+        if hash[ch]
+            sent[i] = hash[ch]
+        elsif sent[i] != " "
+            sent[i] = '?'
+        end
+    end
+    sent
+end
+
+p energetic_encoding('sent sea',
+    'e'=>'i', 's'=>'z', 'n'=>'m', 't'=>'p', 'a'=>'u'
+) # 'zimp ziu'
+
+p energetic_encoding('cat',
+    'a'=>'o', 'c'=>'k'
+) # 'ko?'
+
+p energetic_encoding('hello world',
+    'o'=>'i', 'l'=>'r', 'e'=>'a'
+) # '?arri ?i?r?'
+
+p energetic_encoding('bike', {}) # '????'
