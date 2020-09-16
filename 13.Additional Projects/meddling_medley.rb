@@ -312,3 +312,27 @@ p silly_talk('Kids like cats and dogs') # "Kibids likee cabats aband dobogs"
 p silly_talk('Stop that scooter') # "Stobop thabat scobooboteber"
 p silly_talk('They can code') # "Thebey caban codee"
 p silly_talk('He flew to Italy') # "Hee flebew too Ibitabaly"
+
+# ---------------------------------------------------------------------------------
+
+def compress(str)
+    compressed = ""
+    c = 1
+    (1...str.length).each do |i|
+        if str[i] == str[i-1]
+            c += 1
+        end
+        if str[i] != str[i+1] || i == str.length-1
+            compressed += str[i]
+            if c > 1
+                compressed += c.to_s
+                c = 1
+            end
+        end
+    end
+    compressed
+end
+
+p compress('aabbbbc')   # "a2b4c"
+p compress('boot')      # "bo2t"
+p compress('xxxyxxzzzz')# "x3yx2z4"
