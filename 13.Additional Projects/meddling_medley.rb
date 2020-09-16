@@ -61,3 +61,17 @@ p counted_characters("that's alright folks") # ["t"]
 p counted_characters("mississippi") # ["i", "s"]
 p counted_characters("hot potato soup please") # ["o", "t", " ", "p"]
 p counted_characters("runtime") # []
+
+# ---------------------------------------------------------------------------------
+
+def triplet_true?(str)
+    count = Hash.new(0)
+    str.each_char { |ch| count[ch] += 1 }
+    count.keys.any? { |k| count[k] >= 3 }
+end
+
+p triplet_true?('terrrrrible')   # true
+p triplet_true?('caaabb')        # true
+p triplet_true?('runninggg')     # true
+p triplet_true?('bootcamp')      # false
+p triplet_true?('e')             # false
