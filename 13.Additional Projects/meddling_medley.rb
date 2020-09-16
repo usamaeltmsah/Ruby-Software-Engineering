@@ -114,3 +114,21 @@ end
 p uncompress('a2b4c1') # 'aabbbbc'
 p uncompress('b1o2t1') # 'boot'
 p uncompress('x3y1x2z4') # 'xxxyxxzzzz'
+
+# ---------------------------------------------------------------------------------
+# ---------------------------------------------------------------------------------
+### Phase 2: More difficult, maybe?
+
+def conjunct_select(arr, *prcs)
+    selected = []
+    arr.each { |el| selected << el if prcs.all? { |prc| prc.call(el)} }
+    selected
+end
+
+is_positive = Proc.new { |n| n > 0 }
+is_odd = Proc.new { |n| n.odd? }
+less_than_ten = Proc.new { |n| n < 10 }
+
+p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive) # [4, 8, 11, 7, 13]
+p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive, is_odd) # [11, 7, 13]
+p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive, is_odd, less_than_ten) # [7]
