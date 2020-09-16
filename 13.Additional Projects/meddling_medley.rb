@@ -278,3 +278,37 @@ p alternating_vowel('panthers are great animals') # "pnthers ar grat animls"
 p alternating_vowel('running panthers are epic') # "rnning panthrs re epc"
 p alternating_vowel('code properly please') # "cde proprly plase"
 p alternating_vowel('my forecast predicts rain today') # "my forecst prdicts ran tday"
+
+# ---------------------------------------------------------------------------------
+
+def silly_talk(sent)
+    words = sent.split
+    words.each_with_index do |w, i|
+        if ends_with_vowel(w)
+            words[i] += w[-1]
+        else
+            words[i] = add_b_and_vowel_after_vowels(w)
+        end
+    end
+    words.join(" ")
+end
+
+def ends_with_vowel(str)
+    VOWELS.include?(str[-1])
+end
+
+def add_b_and_vowel_after_vowels(str)
+    new_str = ""
+    str.each_char do |ch|
+        new_str += ch
+        if VOWELS.include?(ch)
+            new_str += "b" + ch
+        end
+    end
+    new_str
+end
+
+p silly_talk('Kids like cats and dogs') # "Kibids likee cabats aband dobogs"
+p silly_talk('Stop that scooter') # "Stobop thabat scobooboteber"
+p silly_talk('They can code') # "Thebey caban codee"
+p silly_talk('He flew to Italy') # "Hee flebew too Ibitabaly"
