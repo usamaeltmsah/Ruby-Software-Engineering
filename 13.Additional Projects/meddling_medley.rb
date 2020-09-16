@@ -133,6 +133,7 @@ p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive) # [4, 8, 11, 7, 13]
 p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive, is_odd) # [11, 7, 13]
 p conjunct_select([4, 8, -2, 11, 7, -3, 13], is_positive, is_odd, less_than_ten) # [7]
 
+# ---------------------------------------------------------------------------------
 
 def convert_pig_latin(str)
     vowels = "aeiou"
@@ -155,7 +156,7 @@ def convert_pig_latin(str)
             end
             tmp = w[first_vowel_ind..] + w[0...first_vowel_ind] + "ay"
             # If words are capitalized in the original sentence, they should remain capitalized in the translated sentence
-            tmp.capitalize! if words[i].capitalize == words[i]
+            tmp.capitalize! if w.capitalize == w
             words[i] = tmp
         end
     end
@@ -167,3 +168,38 @@ p convert_pig_latin('I cannot find the trash') # "I annotcay indfay ethay ashtra
 p convert_pig_latin('What an interesting problem') # "Atwhay an interestingyay oblempray"
 p convert_pig_latin('Her family flew to France') # "Erhay amilyfay ewflay to Ancefray"
 p convert_pig_latin('Our family flew to France') # "Ouryay amilyfay ewflay to Ancefray"
+
+# ---------------------------------------------------------------------------------
+
+def reverberate(str)
+    vowels = "aeiou"
+    words = str.split
+    words.each_with_index do |w, i|
+        # Do nothing if len < 3
+        if w.length < 3
+            next
+            # If ends with vowel repeat it!
+        elsif vowels.include?(w[-1])
+            words[i] *= 2
+            words[i].capitalize! if w.capitalize == w
+        else
+            last_vowel_ind = nil
+            (w.length-1).downto(0) do |j|
+                if vowels.include?(w[j])
+                    last_vowel_ind = j
+                    break
+                end
+            end
+            tmp = w + w[last_vowel_ind..]
+            # If words are capitalized in the original sentence, they should remain capitalized in the translated sentence
+            tmp.capitalize! if w.capitalize == w
+            words[i] = tmp
+        end
+    end
+    words.join(" ")
+end
+
+p reverberate('We like to go running fast') # "We likelike to go runninging fastast"
+p reverberate('He cannot find the trash') # "He cannotot findind thethe trashash"
+p reverberate('Pasta is my favorite dish') # "Pastapasta is my favoritefavorite dishish"
+p reverberate('Her family flew to France') # "Herer familyily flewew to Francefrance"
