@@ -62,7 +62,18 @@ class Array
         end
         zipped
     end
+
+    def my_rotate(val=1)
+        new_arr = self[0..]
+        if val > 0
+            val.times { || new_arr << new_arr.shift }
+        else
+            (-val).times { || new_arr.unshift(new_arr.pop) }
+        end
+        new_arr
+    end
 end
+
 
 return_value = [1, 2, 3].my_each do |num|
   puts num
@@ -107,3 +118,11 @@ p [1, 2].my_zip(a, b)    # => [[1, 4, 7], [2, 5, 8]]
 c = [10, 11, 12]
 d = [13, 14, 15]
 p [1, 2].my_zip(a, b, c, d)    # => [[1, 4, 7, 10, 13], [2, 5, 8, 11, 14]]
+
+# ------------------------------------------------------------------
+
+a = [ "a", "b", "c", "d" ]
+p a.my_rotate         #=> ["b", "c", "d", "a"]
+p a.my_rotate(2)      #=> ["c", "d", "a", "b"]
+p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
+p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
