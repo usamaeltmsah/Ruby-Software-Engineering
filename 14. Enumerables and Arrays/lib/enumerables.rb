@@ -1,10 +1,8 @@
 class Array
   def my_each(&prc)
     len = self.length
-    i = 0
-    while i < len
-        prc.call(self[i])
-        i += 1
+    len.times do |i|
+      prc.call(self[i])
     end
     self
   end
@@ -13,19 +11,19 @@ end
 
 class Array
     def my_select(&prc)
-      arr = []
+      selected = []
       self.my_each do |num|
-          arr << num if prc.call(num)
+          selected << num if prc.call(num)
       end
-      arr
+      selected
     end
 
     def my_reject(&prc)
-      arr = []
+      rejected = []
       self.my_each do |num|
-          arr << num if !prc.call(num)
+          rejected << num if !prc.call(num)
       end
-      arr
+      rejected
     end
 
     def my_any?(&prc)
@@ -43,20 +41,20 @@ class Array
     end
 
     def my_flatten
-      arr = []
+      flattened = []
       self.my_each do |el|
           if !el.kind_of?(Array)
-              arr << el
+              flattened << el
           else
-              arr += el.my_flatten
+              flattened += el.my_flatten
           end
       end
-      arr
+      flattened
     end
 
     def my_zip(*arrs)
       zipped = []
-      (0...self.length).each do |i|
+      self.length.times do |i|
           tmp_arr = [self[i]]
           arrs.my_each do |arr|
               tmp_arr << arr[i]
@@ -76,13 +74,11 @@ class Array
       new_arr
     end
 
-    def my_join(del="")
+    def my_join(delim="")
       str = ""
-      (0...self.length).each do |i|
+      self.length.times do |i|
           str += self[i]
-          if i < self.length - 1
-              str += del
-          end
+          str += delim unless i == self.length - 1
       end
       str
     end
