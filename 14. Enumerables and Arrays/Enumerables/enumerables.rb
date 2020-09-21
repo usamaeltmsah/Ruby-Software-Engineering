@@ -72,6 +72,17 @@ class Array
         end
         new_arr
     end
+
+    def my_join(del="")
+        str = ""
+        (0...self.length).each do |i|
+            str += self[i]
+            if i < self.length - 1
+                str += del
+            end
+        end
+        str
+    end
 end
 
 
@@ -126,3 +137,9 @@ p a.my_rotate         #=> ["b", "c", "d", "a"]
 p a.my_rotate(2)      #=> ["c", "d", "a", "b"]
 p a.my_rotate(-3)     #=> ["b", "c", "d", "a"]
 p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
+
+# ------------------------------------------------------------------
+
+a = [ "a", "b", "c", "d" ]
+p a.my_join         # => "abcd"
+p a.my_join("$")    # => "a$b$c$d"
