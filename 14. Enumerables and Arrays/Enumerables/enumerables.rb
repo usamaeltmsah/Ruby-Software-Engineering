@@ -38,6 +38,18 @@ class Array
         end
         true
     end
+
+    def my_flatten
+        arr = []
+        self.my_each do |el|
+            if !el.kind_of?(Array)
+                arr << el
+            else
+                arr += el.my_flatten
+            end
+        end
+        arr
+    end
 end
 
 return_value = [1, 2, 3].my_each do |num|
@@ -67,3 +79,7 @@ p a.my_any? { |num| num > 1 } # => true
 p a.my_any? { |num| num == 4 } # => false
 p a.my_all? { |num| num > 1 } # => false
 p a.my_all? { |num| num < 4 } # => true
+
+# ------------------------------------------------------------------
+
+p [1, 2, 3, [4, [5, 6]], [[[7]], 8]].my_flatten # => [1, 2, 3, 4, 5, 6, 7, 8]
