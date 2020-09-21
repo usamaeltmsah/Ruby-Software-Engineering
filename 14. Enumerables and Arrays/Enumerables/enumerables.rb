@@ -83,6 +83,14 @@ class Array
         end
         str
     end
+    
+    def my_reverse
+        reversed = []
+        (self.length - 1).downto(0).each do |i|
+            reversed << self[i]
+        end
+        reversed
+    end
 end
 
 
@@ -143,3 +151,8 @@ p a.my_rotate(15)     #=> ["d", "a", "b", "c"]
 a = [ "a", "b", "c", "d" ]
 p a.my_join         # => "abcd"
 p a.my_join("$")    # => "a$b$c$d"
+
+# ------------------------------------------------------------------
+
+p [ "a", "b", "c" ].my_reverse   #=> ["c", "b", "a"]
+p [ 1 ].my_reverse               #=> [1]
