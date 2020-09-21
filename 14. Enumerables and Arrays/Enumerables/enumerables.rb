@@ -1,11 +1,6 @@
 class Array
-    def my_each
-        len = self.length
-        i = 0
-        while i < len
-            yield self[i]
-            i += 1
-        end
+    def my_each(&prc)
+        prc.call(self)
         self
     end
 end
