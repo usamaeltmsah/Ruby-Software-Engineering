@@ -1,95 +1,98 @@
 class Array
-    def my_each(&prc)
-        len = self.length
-        i = 0
-        while i < len
-            prc.call(self[i])
-            i += 1
-        end
-        self
+  def my_each(&prc)
+    len = self.length
+    i = 0
+    while i < len
+        prc.call(self[i])
+        i += 1
     end
+    self
+  end
+end
 
+
+class Array
     def my_select(&prc)
-        arr = []
-        self.my_each do |num|
-            arr << num if prc.call(num)
-        end
-        arr
+      arr = []
+      self.my_each do |num|
+          arr << num if prc.call(num)
+      end
+      arr
     end
 
     def my_reject(&prc)
-        arr = []
-        self.my_each do |num|
-            arr << num if !prc.call(num)
-        end
-        arr
+      arr = []
+      self.my_each do |num|
+          arr << num if !prc.call(num)
+      end
+      arr
     end
 
     def my_any?(&prc)
-        self.my_each do |num|
-            return true if prc.call(num)
-        end
-        false
+      self.my_each do |num|
+          return true if prc.call(num)
+      end
+      false
     end
 
     def my_all?(&prc)
-        self.my_each do |num|
-            return false if !prc.call(num)
-        end
-        true
+      self.my_each do |num|
+          return false if !prc.call(num)
+      end
+      true
     end
 
     def my_flatten
-        arr = []
-        self.my_each do |el|
-            if !el.kind_of?(Array)
-                arr << el
-            else
-                arr += el.my_flatten
-            end
-        end
-        arr
+      arr = []
+      self.my_each do |el|
+          if !el.kind_of?(Array)
+              arr << el
+          else
+              arr += el.my_flatten
+          end
+      end
+      arr
     end
 
     def my_zip(*arrs)
-        zipped = []
-        (0...self.length).each do |i|
-            tmp_arr = [self[i]]
-            arrs.my_each do |arr|
-                tmp_arr << arr[i]
-            end
-            zipped << tmp_arr
-        end
-        zipped
+      zipped = []
+      (0...self.length).each do |i|
+          tmp_arr = [self[i]]
+          arrs.my_each do |arr|
+              tmp_arr << arr[i]
+          end
+          zipped << tmp_arr
+      end
+      zipped
     end
 
     def my_rotate(val=1)
-        new_arr = self[0..]
-        if val > 0
-            val.times { || new_arr << new_arr.shift }
-        else
-            (-val).times { || new_arr.unshift(new_arr.pop) }
-        end
-        new_arr
+      new_arr = self[0..]
+      if val > 0
+          val.times { || new_arr << new_arr.shift }
+      else
+          (-val).times { || new_arr.unshift(new_arr.pop) }
+      end
+      new_arr
     end
 
     def my_join(del="")
-        str = ""
-        (0...self.length).each do |i|
-            str += self[i]
-            if i < self.length - 1
-                str += del
-            end
-        end
-        str
+      str = ""
+      (0...self.length).each do |i|
+          str += self[i]
+          if i < self.length - 1
+              str += del
+          end
+      end
+      str
     end
     
     def my_reverse
-        reversed = []
-        (self.length - 1).downto(0).each do |i|
-            reversed << self[i]
-        end
-        reversed
+      reversed = []
+      (self.length - 1).downto(0).each do |i|
+          reversed << self[i]
+      end
+      reversed
     end
 end
 
