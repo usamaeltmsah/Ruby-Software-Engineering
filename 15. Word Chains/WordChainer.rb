@@ -28,7 +28,7 @@ class WordChainer
 
     def run(source, target)
         @current_words = Set.new [source]
-        @all_seen_words = Set.new [source]
+        @all_seen_words = { source => nil }
         
         until @current_words.empty? || @all_seen_words.include?(target)
             explore_curent_words
@@ -40,13 +40,14 @@ class WordChainer
         new_current_words = []
         @current_words.each do |word|
             adj_words = adjacent_words(word)
-            adj_words.each do |w|
-                new_current_words << w if !@all_seen_words.include?(w)
-                @all_seen_words << w
+            adj_words.each do |adj_word|
+                new_current_words << adj_word if !@all_seen_words.keys.include?(adj_word)
+                @all_seen_words[adj_word] = word
             end
         end
         @current_words = new_current_words
+        p @all_seen_words
     end
 end
 
-  p WordChainer.new.run("love", "like")
+  p WordChainer.new.run("market", "winner")
