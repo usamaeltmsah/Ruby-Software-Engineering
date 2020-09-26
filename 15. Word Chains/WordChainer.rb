@@ -31,8 +31,14 @@ class WordChainer
         @all_seen_words = Set.new [source]
         
         until @current_words.empty? || @all_seen_words.include?(target)
-            new_current_words = []
-            @current_words.each do |word|
+            explore_curent_words
+        end
+        @current_words.include?(target)
+    end
+    
+    def explore_curent_words
+        new_current_words = []
+        @current_words.each do |word|
             adj_words = adjacent_words(word)
             adj_words.each do |w|
                 new_current_words << w if !@all_seen_words.include?(w)
@@ -40,8 +46,6 @@ class WordChainer
             end
         end
         @current_words = new_current_words
-        end
-        @current_words.include?(target)
     end
 end
 
