@@ -25,4 +25,24 @@ class WordChainer
         end
         adj_words
     end
+
+    def run(source, target)
+        @current_words = Set.new [source]
+        @all_seen_words = Set.new [source]
+        
+        until @current_words.empty? || @all_seen_words.include?(target)
+            new_current_words = []
+            @current_words.each do |word|
+            adj_words = adjacent_words(word)
+            adj_words.each do |w|
+                new_current_words << w if !@all_seen_words.include?(w)
+                @all_seen_words << w
+            end
+        end
+        @current_words = new_current_words
+        end
+        @current_words.include?(target)
+    end
 end
+
+  p WordChainer.new.run("love", "like")
