@@ -33,7 +33,7 @@ class WordChainer
         until @current_words.empty? || @all_seen_words.include?(target)
             explore_curent_words
         end
-        @current_words.include?(target)
+        build_path(target)
     end
     
     def explore_curent_words
@@ -41,12 +41,23 @@ class WordChainer
         @current_words.each do |word|
             adj_words = adjacent_words(word)
             adj_words.each do |adj_word|
-                new_current_words << adj_word if !@all_seen_words.keys.include?(adj_word)
+                next if @all_seen_words.key?(adj_word)
+
+                new_current_words << adj_word
                 @all_seen_words[adj_word] = word
             end
         end
         @current_words = new_current_words
-        p @all_seen_words
+    end
+
+    def build_path(target)
+        path = []
+        cur = target
+        until cur.nil?
+            path << cur
+            cur = @all_seen_words[cur]
+        end
+        path.reverse
     end
 end
 
