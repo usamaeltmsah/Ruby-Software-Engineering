@@ -25,4 +25,14 @@ class PolyTreeNode
         raise "This node isn't a child for any parent" if !@children.include?(child_node)
         child_node.parent = nil
     end
+
+    def dfs(target_value, node=self)
+        return nil if node.value.nil?
+        return node if target_value == node.value
+        node.children.each do |child|
+            search_res = dfs(target_value, child)
+            return search_res unless search_res.nil?
+        end
+        nil
+    end
 end
