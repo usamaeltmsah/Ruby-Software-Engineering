@@ -35,4 +35,17 @@ class PolyTreeNode
         end
         nil
     end
+
+    def bfs(target_value=nil, &prc)
+        prc ||= Proc.new { |node| target_value == node.value }
+
+        nodes = [self]
+        until nodes.empty?
+            node = nodes.shift
+
+            return node if prc.call(node)
+            nodes += node.children
+        end
+        nil
+    end
 end
