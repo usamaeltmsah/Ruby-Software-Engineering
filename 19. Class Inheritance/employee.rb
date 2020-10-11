@@ -5,7 +5,7 @@ class Employee
         @name = name
         @title = title
         @salary = salary
-        @boss = boss
+        self.boss = boss
     end
 
     def boss=(boss)
