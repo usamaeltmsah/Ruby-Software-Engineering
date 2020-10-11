@@ -2,15 +2,14 @@ require_relative 'employee'
 
 class Manager < Employee
     attr_reader :employees
-    def initialize(name, title, salary, employees)
-        @employees = employees
-        super(name, title, salary)
+    def initialize(name, title, salary, boss = nil)
+        @employees = []
+        super(name, title, salary, boss)
     end
 
-    def sum_salary
-        sum = 0
-        employees.each { |employee| sum += employee.salary }
-        sum
+    def add_employee(sub_emp)
+        @employees << sub_emp
+        sub_emp
     end
 
     def bonus(multiplier)
