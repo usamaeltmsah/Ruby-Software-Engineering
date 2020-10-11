@@ -1,7 +1,7 @@
 # PHASE 2
 def convert_to_int(str)
   begin
-    Integer(str)
+    num = Integer(str)
   rescue StandardError => e
     puts "Cant convert '#{str}' to Integer"
   ensure
@@ -53,8 +53,11 @@ end
 # PHASE 4
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
+    raise ArgumentError.new("'name' cannot be empty") if name.empty?
+    raise ArgumentError.new("'yrs_known' must be >= 5 (best friendships take time)") if convert_to_int(yrs_known) < 5
+    raise ArgumentError.new("'fav_pasttime' cannot be empty") if fav_pastime.empty?
     @name = name
-    @yrs_known = yrs_known
+    @yrs_known = convert_to_int(yrs_known)
     @fav_pastime = fav_pastime
   end
 
