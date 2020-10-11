@@ -54,10 +54,11 @@ end
 class BestFriend
   def initialize(name, yrs_known, fav_pastime)
     raise ArgumentError.new("'name' cannot be empty") if name.empty?
-    raise ArgumentError.new("'yrs_known' must be >= 5 (best friendships take time)") if convert_to_int(yrs_known) < 5
+    yrs_known = convert_to_int(yrs_known)
+    raise ArgumentError.new("'yrs_known' must be >= 5 (best friendships take time)") if yrs_known < 5
     raise ArgumentError.new("'fav_pasttime' cannot be empty") if fav_pastime.empty?
     @name = name
-    @yrs_known = convert_to_int(yrs_known)
+    @yrs_known = yrs_known
     @fav_pastime = fav_pastime
   end
 
