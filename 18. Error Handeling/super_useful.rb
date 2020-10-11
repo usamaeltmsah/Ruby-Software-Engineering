@@ -3,8 +3,11 @@ def convert_to_int(str)
   begin
     Integer(str)
   rescue StandardError => e
-    puts e
+    puts "Cant convert '#{str}' to Integer"
+  ensure
+    num ||= 0
   end
+  num
 end
 
 # PHASE 3
