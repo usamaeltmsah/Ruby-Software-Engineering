@@ -39,11 +39,11 @@ class Simon
   end
 
   def round_success_message
-
+    "You won in this round!"
   end
 
   def game_over_message
-
+    "Game Over!"
   end
 
   def reset_game
