@@ -52,7 +52,9 @@ describe Dessert do
       expect(toffee.quantity).to eq(90)
     end
 
-    it "raises an error if the amount is greater than the quantity"
+    it "raises an error if the amount is greater than the quantity" do
+      expect{ toffee.eat(101) }.to raise_error
+    end
   end
 
   describe "#serve" do
