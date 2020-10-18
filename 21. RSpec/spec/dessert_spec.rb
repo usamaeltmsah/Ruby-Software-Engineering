@@ -13,7 +13,9 @@ describe Dessert do
     it "sets a type" do
       expect(toffee.type).to eq("toffee")
     end
-    it "sets a quantity" 
+    it "sets a quantity" do
+      expect(toffee.quantity).to eq(100)
+    end
     it "starts ingredients as an empty array"
 
     it "raises an argument error when given a non-integer quantity"
