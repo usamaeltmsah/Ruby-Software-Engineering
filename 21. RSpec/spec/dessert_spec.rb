@@ -27,7 +27,10 @@ describe Dessert do
   end
 
   describe "#add_ingredient" do
-    it "adds an ingredient to the ingredients array"
+    it "adds an ingredient to the ingredients array" do
+      toffee.add_ingredient("cacao")
+      expect(toffee.ingredients).to include("cacao")
+    end
   end
 
   describe "#mix!" do
