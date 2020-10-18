@@ -16,12 +16,14 @@ describe Dessert do
     it "sets a quantity" do
       expect(toffee.quantity).to eq(100)
     end
-    
+
     it "starts ingredients as an empty array" do
       expect(toffee.ingredients).to eq([])
     end
 
-    it "raises an argument error when given a non-integer quantity"
+    it "raises an argument error when given a non-integer quantity" do
+      expect { Dessert.new("toffee", "hundered", chef) }.to raise_error(ArgumentError)
+    end
   end
 
   describe "#add_ingredient" do
