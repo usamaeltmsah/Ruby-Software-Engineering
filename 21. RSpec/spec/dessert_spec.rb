@@ -16,6 +16,7 @@ describe Dessert do
     it "sets a quantity" do
       expect(toffee.quantity).to eq(100)
     end
+    
     it "starts ingredients as an empty array" do
       expect(toffee.ingredients).to eq([])
     end
