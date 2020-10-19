@@ -2,7 +2,7 @@ require 'rspec'
 require "functions"
 
 describe Array do
-    
+
     describe "#my_uniq" do
         let(:arr) { [1, 5, 8, 3, 2, 5, 4, 4, 3] }
         let(:uniq_arr) { [1, 5, 8, 3, 2, 4] }
@@ -25,18 +25,24 @@ describe Array do
     end
 
     describe "#two_sum" do
+        let(:arr) { [-1, 0, 2, -2, 1] }
+        let(:arr_has_zeros) { [-1, 0, 2, -2, 1, 0] }
         it "Shouldn't accept parameters" do
-            expect { [-1, 0, 2, -2, 1].two_sum }.to_not raise_error
+            expect { arr.two_sum }.to_not raise_error
         end
 
         it "Return array of pairs" do
-                [-1, 0, 2, -2, 1].two_sum.each do |el|
+                arr.two_sum.each do |el|
                     expect(el.length).to eq(2)
                 end
         end
 
         it "Finds pairs of positions where the elements at those positions sum to zero" do
-            expect([-1, 0, 2, -2, 1].two_sum).to eq([[0, 4], [2, 3]])
+            expect(arr.two_sum).to eq([[0, 4], [2, 3]])
+        end
+
+        it "Works well with two zeros" do
+            expect(arr_has_zeros.two_sum).to eq([[0, 4], [1, 5], [2, 3]])
         end
     end
 
