@@ -15,4 +15,20 @@ describe Array do
             expect([1, 5, 8, 3, 2, 5, 4, 4, 3].my_uniq).to eq([1, 5, 8, 3, 2, 4])
         end
     end
+
+    describe "#two_sum" do
+        it "Shouldn't accept parameters" do
+            expect { [-1, 0, 2, -2, 1].two_sum }.to_not raise_error
+        end
+
+        it "Return array of pairs" do
+                [-1, 0, 2, -2, 1].two_sum.each do |el|
+                    expect(el.length).to eq(2)
+                end
+        end
+
+        it "Finds pairs of positions where the elements at those positions sum to zero" do
+            expect([-1, 0, 2, -2, 1].two_sum).to eq([[0, 4], [2, 3]])
+        end
+    end
 end
