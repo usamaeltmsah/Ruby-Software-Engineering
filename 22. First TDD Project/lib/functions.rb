@@ -18,10 +18,15 @@ class Array
     end
 
     def my_transpose
-        [
-            [0, 3, 6],
-            [1, 4, 7],
-            [2, 5, 8]
-        ]
+        dim = self[0].length
+        cols = Array.new(dim) { Array.new(dim) }
+
+        dim.times do |i|
+            dim.times do |j|
+                cols[j][i] = self[i][j]
+            end
+        end
+
+        cols
     end
 end
