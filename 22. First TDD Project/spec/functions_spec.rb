@@ -70,4 +70,21 @@ describe Array do
             expect(rows.my_transpose).to eq(cols)
         end
     end
+
+    describe "#pick_stocks" do
+        let(:arr1) { [3, 1, 0, 4, 6, 9] }
+        let(:arr2) { [3, 2, 5, 0, 6] }
+        let(:arr3) { [4, 3, 2, 1] }
+        it "finds a simple pair" do
+            expect(arr1.pick_stocks).to eq([2, 5])
+        end
+
+        it "finds a better pair after an inferior pair" do
+            expect(arr2.pick_stocks).to eq([3, 4])
+        end
+
+        it "does not buy stocks in a crash" do
+            expect(arr3.pick_stocks).to be_nil
+        end
+    end
 end
