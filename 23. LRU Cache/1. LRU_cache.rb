@@ -1,11 +1,13 @@
 class LRUCache
-    def initialize
+    def initialize(size)
+      raise "Size must be > 0" if size <= 0
+      @size = size
       @cache = []
     end
 
     def count
       # returns number of elements currently in cache
-      cache.length
+      @cache.length
     end
 
     def add(el)
