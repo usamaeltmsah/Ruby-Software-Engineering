@@ -31,5 +31,8 @@ class LRUCache
 
     private
     # helper methods go here!
+    def there_is_empty_place_in_cache?
+      count < @size
+    end
 
   end
