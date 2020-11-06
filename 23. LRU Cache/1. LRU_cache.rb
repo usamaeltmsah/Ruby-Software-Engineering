@@ -12,15 +12,15 @@ class LRUCache
 
     def add(el)
       # adds element to cache according to LRU principle
-      if there_is_empty_place_in_cache? && cache_doesnt_contain(el)
-        push(el)
-      elsif cache_contains(el)
-        ind = @cache.index(el)
-        @cache.delete_at(ind)
-        push(el)
+      if there_is_empty_place_in_cache? && cache_doesnt_contain?(el) # O(N)
+        push(el) # O(1)
+      elsif cache_contains?(el) # O(N)
+        ind = @cache.index(el) # O(N)
+        @cache.delete_at(ind) # O(N)
+        push(el) # O(1)
       else
-        @cache.delete_at(0)
-        push(el)
+        @cache.delete_at(0) # O(1)
+        push(el) # O(1)
       end
     end
 
@@ -35,11 +35,11 @@ class LRUCache
       count < @size
     end
 
-    def cache_doesnt_contain(el)
-      !cache_contains(el)
+    def cache_doesnt_contain?(el)
+      !cache_contains?(el)
     end
 
-    def cache_contains(el)
+    def cache_contains?(el)
       @cache.include?(el)
     end
 
