@@ -43,4 +43,8 @@ class LRUCache
       @cache.include?(el)
     end
 
+    def push(el)
+      @cache << el
+    end
+
   end
