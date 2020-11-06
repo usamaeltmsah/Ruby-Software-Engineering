@@ -35,4 +35,8 @@ class LRUCache
       count < @size
     end
 
+    def cache_doesnt_contain(el)
+      !cache_contains(el)
+    end
+
   end
