@@ -26,6 +26,7 @@ class LRUCache
 
     def show
       # shows the items in the cache, with the LRU item first
+      print @cache
     end
 
     private
