@@ -39,4 +39,8 @@ class LRUCache
       !cache_contains(el)
     end
 
+    def cache_contains(el)
+      @cache.include?(el)
+    end
+
   end
